@@ -11,7 +11,7 @@
                    id="dataRelease"/>
             <label align="MIDDLE_LEFT"
                    id="numOfRating"/>
-            <hbox id="btnBox" spacing="true">
+            <hbox id="btnBox" spacing="true" align="MIDDLE_CENTER">
                 <button id="more"
                         align="MIDDLE_CENTER"
                         caption="msg://movie-card.more"
