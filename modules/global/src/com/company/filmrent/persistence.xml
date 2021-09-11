@@ -3,5 +3,6 @@
     <persistence-unit name="filmrent" transaction-type="RESOURCE_LOCAL">
 
         <class>com.company.filmrent.entity.movie.Movie</class>
+        <class>com.company.filmrent.entity.user.Critic</class>
     </persistence-unit>
 </persistence>

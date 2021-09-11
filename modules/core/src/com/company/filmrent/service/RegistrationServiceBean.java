@@ -1,9 +1,9 @@
 package com.company.filmrent.service;
 
 import com.company.filmrent.core.role.ClientRole;
+import com.company.filmrent.entity.user.Critic;
 import com.haulmont.cuba.core.global.*;
 import com.haulmont.cuba.security.entity.Group;
-import com.haulmont.cuba.security.entity.Role;
 import com.haulmont.cuba.security.entity.User;
 import com.haulmont.cuba.security.entity.UserRole;
 import org.springframework.stereotype.Service;
@@ -42,6 +42,7 @@ public class RegistrationServiceBean implements RegistrationService {
         // Create a user instance
         User user = metadata.create(User.class);
         user.setLogin(login);
+        user.setName(login);
         user.setPassword(passwordEncryption.getPasswordHash(user.getId(), password));
 
         // Note that the platform does not support the default group out of the box, so here we define the default group id and set it for the newly registered users.
@@ -56,8 +57,13 @@ public class RegistrationServiceBean implements RegistrationService {
         userRole.setUser(user);
         userRole.setRoleName(ClientRole.NAME);
 
+        // Create Critic
+        Critic critic = metadata.create(Critic.class);
+        critic.setUser(user);
+        critic.setUserRang(0);
+
         // Save new entities
-        dataManager.commit(new CommitContext(user, userRole));
+        dataManager.commit(new CommitContext(user, userRole, critic));
 
         return new RegistrationResult(user);
     }

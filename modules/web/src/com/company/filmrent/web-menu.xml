@@ -5,6 +5,7 @@
         <item id="sec$Role.browse"/>
         <item id="entityInspector.browse"/>
         <item screen="filmrent_Movie.browse" caption="mainMsg://menu_config.filmrent_Movie.browse"/>
+        <item screen="filmrent_Critic.browse" caption="mainMsg://menu_config.filmrent_Critic.browse"/>
     </menu>
     <menu id="filmRentMenu">
     </menu>
