@@ -34,14 +34,10 @@ public class ExtMainScreen extends MainScreen {
 
     @Subscribe("movieBtn")
     public void onMovieBtnClick(Button.ClickEvent event) {
-        if(isLogin()) {
-            Movies movies = screenBuilders.screen(this).withScreenClass(Movies.class).build();
-            movies.setMovies(moviesService.getMovies());
-            movies.setCaption(messages.getMessage(this.getClass(), "extMainScreen.films"));
-            movies.show();
-        } else {
-            NotificationsHelper.getUnauthNotification(this.getWindow()).show();
-        }
+        Movies movies = screenBuilders.screen(this).withScreenClass(Movies.class).build();
+        movies.setMovies(moviesService.getMovies());
+        movies.setCaption(messages.getMessage(this.getClass(), "extMainScreen.films"));
+        movies.show();
     }
 
     @Subscribe("profileBtn")

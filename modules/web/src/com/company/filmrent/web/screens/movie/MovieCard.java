@@ -6,6 +6,7 @@ import com.haulmont.cuba.gui.ScreenBuilders;
 import com.haulmont.cuba.gui.components.Button;
 import com.haulmont.cuba.gui.components.Label;
 import com.haulmont.cuba.gui.screen.*;
+import com.haulmont.cuba.security.global.UserSession;
 
 import javax.inject.Inject;
 import java.text.DateFormat;
@@ -16,6 +17,8 @@ import java.util.Date;
 @UiDescriptor("movie-card.xml")
 public class MovieCard extends ScreenFragment {
 
+    @Inject
+    private UserSession userSession;
     @Inject
     private ScreenBuilders screenBuilders;
     @Inject
@@ -30,10 +33,8 @@ public class MovieCard extends ScreenFragment {
     private Label<String> title;
 
     private Movie movie;
-
-    public void setMovie(Movie movie) {
-        this.movie = movie;
-    }
+    @Inject
+    private Button more;
 
     @Subscribe
     public void onAfterInit(AfterInitEvent event) {
@@ -42,10 +43,9 @@ public class MovieCard extends ScreenFragment {
         time.setValue(messages.formatMessage(this.getClass(), "movie-card.time", movie.getTime()));
         dataRelease.setValue(messages.formatMessage(this.getClass(), "movie-card.dataRelease", sdf.format(movie.getDataRelease())));
         numOfRating.setValue(messages.formatMessage(this.getClass(), "movie-card.numOfRating", movie.getNumOfRating()));
-    }
-
-    public Movie getMovie() {
-        return movie;
+        if(!isLogin()) {
+            more.setVisible(false);
+        }
     }
 
     @Subscribe("more")
@@ -54,6 +54,14 @@ public class MovieCard extends ScreenFragment {
                 .withScreenClass(MovieMore.class).build();
         movieMore.setEntityToEdit(movie);
         movieMore.show();
+    }
+
+    public void setMovie(Movie movie) {
+        this.movie = movie;
+    }
+
+    private boolean isLogin() {
+        return !userSession.getUser().getLoginLowerCase().equals("anonymous");
     }
 
 }
