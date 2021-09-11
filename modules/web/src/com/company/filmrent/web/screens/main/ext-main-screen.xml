@@ -49,16 +49,18 @@
             <workArea id="workArea"
                       height="100%">
                 <initialLayout margin="true"
-                               spacing="true">
+                               spacing="true"
+                               expand="hbox">
                     <label id="welcomeLabel"
                            align="MIDDLE_CENTER"
                            width="100%"
                            stylename="c-welcome-text"
                            value="msg://application.welcomeText"/>
-                    <!--
-                        This is the work area - central part of the screen.
-                        Put your components here.
-                    -->
+                    <hbox id="hbox" spacing="true" margin="true" width="100%" align="MIDDLE_CENTER">
+                        <button id="movieBtn" icon="font-icon:FILM" caption="msg://extMainScreen.films" width="100px" height="100px" align="MIDDLE_CENTER"/>
+                        <button id="profileBtn" icon="USER" caption="msg://extMainScreen.profile" width="100px" height="100px" align="MIDDLE_CENTER"/>
+                        <button id="libraryBtn" icon="font-icon:BOOK" caption="msg://extMainScreen.library" width="100px" height="100px" align="MIDDLE_CENTER"/>
+                    </hbox>
                 </initialLayout>
             </workArea>
         </hbox>
