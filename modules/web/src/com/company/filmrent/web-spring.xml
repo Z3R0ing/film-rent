@@ -12,6 +12,7 @@
         <property name="remoteServices">
             <map>
                 <entry key="filmrent_RegistrationService" value="com.company.filmrent.service.RegistrationService"/>
+                <entry key="filmrent_MoviesService" value="com.company.filmrent.service.MoviesService"/>
             </map>
         </property>
     </bean>
