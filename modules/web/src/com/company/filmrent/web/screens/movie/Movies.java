@@ -32,6 +32,7 @@ public class Movies extends Screen {
     @Subscribe
     public void onBeforeShow(BeforeShowEvent event) {
         int gridSize = (movies.size() / 2) + 1;
+        gridSize = (gridSize < 3) ? 3 : gridSize;
         GridLayout gridLayout = uiComponents.create(GridLayout.class);
         gridLayout.setRows(gridSize);
         gridLayout.setColumns(gridSize);
