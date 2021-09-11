@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://movieEdit.caption"
+        focusComponent="form"
+        messagesPack="com.company.filmrent.web.screens.movie">
+    <data>
+        <instance id="movieDc"
+                  class="com.company.filmrent.entity.movie.Movie"
+                  view="_local">
+            <loader/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="movieDc">
+            <column width="350px">
+                <textField id="titleField" property="title"/>
+                <textField id="timeField" property="time"/>
+                <dateField id="dataReleaseField" property="dataRelease"/>
+                <textField id="numOfRatingField" property="numOfRating"/>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

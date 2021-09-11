@@ -3,6 +3,10 @@
     <menu id="administration">
         <item id="sec$User.browse"/>
         <item id="sec$Role.browse"/>
+        <item id="entityInspector.browse"/>
+        <item screen="filmrent_Movie.browse" caption="mainMsg://menu_config.filmrent_Movie.browse"/>
+    </menu>
+    <menu id="filmRentMenu">
     </menu>
     <menu id="help">
         <item id="aboutWindow" openType="DIALOG"/>

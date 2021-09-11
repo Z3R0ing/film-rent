@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://movieBrowse.caption"
+        focusComponent="moviesTable"
+        messagesPack="com.company.filmrent.web.screens.movie">
+    <data readOnly="true">
+        <collection id="moviesDc"
+                    class="com.company.filmrent.entity.movie.Movie"
+                    view="_local">
+            <loader id="moviesDl">
+                <query>
+                    <![CDATA[select e from filmrent_Movie e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="moviesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="moviesTable"
+                dataLoader="moviesDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="moviesTable"
+                    width="100%"
+                    dataContainer="moviesDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="title"/>
+                <column id="time"/>
+                <column id="dataRelease"/>
+                <column id="numOfRating"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="moviesTable.create"/>
+                <button id="editBtn" action="moviesTable.edit"/>
+                <button id="removeBtn" action="moviesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

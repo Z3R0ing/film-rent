@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<fragment xmlns="http://schemas.haulmont.com/cuba/screen/fragment.xsd">
+    <layout>
+        <groupBox spacing="true" caption="" width="AUTO">
+            <label align="MIDDLE_CENTER"
+                   stylename="h2 bold"
+                   id="title"/>
+            <label align="MIDDLE_LEFT"
+                   id="time"/>
+            <label align="MIDDLE_LEFT"
+                   id="dataRelease"/>
+            <label align="MIDDLE_LEFT"
+                   id="numOfRating"/>
+            <hbox id="btnBox" spacing="true">
+                <button id="more"
+                        align="MIDDLE_CENTER"
+                        caption="msg://movie-card.more"
+                        icon="font-icon:EYE"/>
+            </hbox>
+        </groupBox>
+    </layout>
+</fragment>
+
