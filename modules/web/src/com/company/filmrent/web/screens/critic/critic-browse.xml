@@ -41,9 +41,9 @@
             <rowsCount/>
             <buttonsPanel id="buttonsPanel"
                           alwaysVisible="true">
-                <button id="createBtn" action="localUsersTable.create"/>
-                <button id="editBtn" action="localUsersTable.edit"/>
-                <button id="removeBtn" action="localUsersTable.remove"/>
+                <button id="createBtn" action="criticTable.create"/>
+                <button id="editBtn" action="criticTable.edit"/>
+                <button id="removeBtn" action="criticTable.remove"/>
             </buttonsPanel>
         </groupTable>
         <hbox id="lookupActions" spacing="true" visible="false">
