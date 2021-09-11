@@ -1,4 +1,3 @@
--- begin MOVIES
 create table Movies (
     ID uuid,
     VERSION integer not null,
@@ -15,5 +14,4 @@ create table Movies (
     Num_of_rating integer not null,
     --
     primary key (ID)
-)^
--- end MOVIES
+);
