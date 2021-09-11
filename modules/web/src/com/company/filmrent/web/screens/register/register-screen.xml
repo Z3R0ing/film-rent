@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://registerScreen.caption"
+        messagesPack="com.company.filmrent.web.screens.register">
+    <layout>
+        <vbox align="MIDDLE_CENTER" width="370px" spacing="true">
+            <textField id="loginField" caption="msg://register.login" width="100%" required="true"/>
+            <passwordField id="passwordField" caption="msg://register.password" width="100%" required="true"/>
+            <button id="sendReportBtn" caption="msg://register.submit" width="100%" stylename="primary" height="45"/>
+        </vbox>
+    </layout>
+</window>
