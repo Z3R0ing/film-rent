@@ -1,6 +1,7 @@
 package com.company.filmrent.web.screens.movie;
 
 import com.company.filmrent.entity.movie.Movie;
+import com.haulmont.cuba.core.global.DataManager;
 import com.haulmont.cuba.core.global.Messages;
 import com.haulmont.cuba.gui.ScreenBuilders;
 import com.haulmont.cuba.gui.components.Button;
@@ -31,10 +32,12 @@ public class MovieCard extends ScreenFragment {
     private Label<String> time;
     @Inject
     private Label<String> title;
+    @Inject
+    private Button more;
 
     private Movie movie;
     @Inject
-    private Button more;
+    private DataManager dataManager;
 
     @Subscribe
     public void onAfterInit(AfterInitEvent event) {
@@ -57,7 +60,7 @@ public class MovieCard extends ScreenFragment {
     }
 
     public void setMovie(Movie movie) {
-        this.movie = movie;
+        this.movie = dataManager.reload(movie, "movie-view");
     }
 
     private boolean isLogin() {

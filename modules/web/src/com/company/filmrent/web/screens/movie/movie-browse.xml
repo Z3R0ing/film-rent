@@ -7,7 +7,7 @@
     <data readOnly="true">
         <collection id="moviesDc"
                     class="com.company.filmrent.entity.movie.Movie"
-                    view="_local">
+                    view="movie-view">
             <loader id="moviesDl">
                 <query>
                     <![CDATA[select e from filmrent_Movie e]]>

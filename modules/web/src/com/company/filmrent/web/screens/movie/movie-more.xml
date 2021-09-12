@@ -5,7 +5,7 @@
     <data>
         <instance id="movieDc"
                   class="com.company.filmrent.entity.movie.Movie"
-                  view="_local">
+                  view="movie-view">
             <loader/>
         </instance>
     </data>

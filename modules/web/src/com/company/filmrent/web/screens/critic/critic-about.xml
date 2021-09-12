@@ -6,7 +6,7 @@
     <data>
         <instance id="criticDc"
                   class="com.company.filmrent.entity.user.Critic">
-            <view extends="_local">
+            <view extends="critic-view">
                 <property name="user" view="_minimal"/>
             </view>
             <loader/>
