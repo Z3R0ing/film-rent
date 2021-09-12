@@ -57,9 +57,9 @@
                            stylename="c-welcome-text"
                            value="msg://application.welcomeText"/>
                     <hbox id="hbox" spacing="true" margin="true" width="100%" align="MIDDLE_CENTER">
-                        <button id="movieBtn" icon="font-icon:FILM" caption="msg://extMainScreen.films" width="100px" height="100px" align="MIDDLE_CENTER"/>
-                        <button id="profileBtn" icon="USER" caption="msg://extMainScreen.profile" width="100px" height="100px" align="MIDDLE_CENTER"/>
-                        <button id="libraryBtn" icon="font-icon:BOOK" caption="msg://extMainScreen.library" width="100px" height="100px" align="MIDDLE_CENTER"/>
+                        <button id="movieBtn" icon="font-icon:FILM" caption="msg://extMainScreen.films" width="200px" height="200px" align="MIDDLE_CENTER"/>
+                        <button id="profileBtn" icon="USER" caption="msg://extMainScreen.profile" width="200px" height="200px" align="MIDDLE_CENTER"/>
+                        <button id="libraryBtn" icon="font-icon:BOOK" caption="msg://extMainScreen.library" width="200px" height="200px" align="MIDDLE_CENTER"/>
                     </hbox>
                 </initialLayout>
             </workArea>
