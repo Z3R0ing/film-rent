@@ -23,7 +23,13 @@ Library view
 Library list
 ![Library list](screenshots/libraryList.png "Library edit")
 Library edit
-![Library list](screenshots/libraryEdit.png "Library edit")
+![Library edit](screenshots/libraryEdit.png "Library edit")
+Genre list
+![Genre list](screenshots/ganreList.png "Genre edit")
+Genre edit
+![Genre list](screenshots/ganreEdit.png "Genre edit")
+Genre filter
+![Genre filter](screenshots/ganreFilter.png "Genre filter")
 
 # SQL scripts
 
