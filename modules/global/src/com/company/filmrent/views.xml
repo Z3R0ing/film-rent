@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <views xmlns="http://schemas.haulmont.com/cuba/view.xsd">
 
-    <view entity="filmrent_Critic" name="critic-view" extends="_local" systemProperties="true">
+    <view entity="filmrent_Critic" name="critic-view" extends="_local">
         <property name="user" view="_minimal">
             <property name="firstName"/>
             <property name="lastName"/>
@@ -16,7 +16,7 @@
             </property>
         </property>
     </view>
-    <view entity="filmrent_Movie" name="movie-view" extends="_local" systemProperties="true"/>
+    <view entity="filmrent_Movie" name="movie-view" extends="_local"/>
     <view entity="filmrent_Library" name="library-view" extends="_local">
         <property name="critic" view="critic-view"/>
         <property name="movie" view="movie-view"/>
