@@ -16,6 +16,4 @@
         <item id="aboutWindow" openType="DIALOG"/>
         <item id="settings"/>
     </menu>
-    <menu id="application-filmrent" insertBefore="administration" caption="mainMsg://menu_config.application-filmrent">
-    </menu>
 </menu-config>

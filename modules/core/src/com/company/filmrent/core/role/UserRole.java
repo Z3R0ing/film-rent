@@ -13,9 +13,9 @@ import com.haulmont.cuba.security.role.EntityAttributePermissionsContainer;
 import com.haulmont.cuba.security.role.EntityPermissionsContainer;
 import com.haulmont.cuba.security.role.ScreenPermissionsContainer;
 
-@Role(name = CriticRole.NAME)
-public class CriticRole extends AnnotatedRoleDefinition {
-    public final static String NAME = "Critic";
+@Role(name = UserRole.NAME)
+public class UserRole extends AnnotatedRoleDefinition {
+    public final static String NAME = "User";
 
     @EntityAccess(entityClass = Movie.class,
             operations = {EntityOp.READ})
@@ -37,6 +37,9 @@ public class CriticRole extends AnnotatedRoleDefinition {
     }
 
     @ScreenAccess(screenIds = {
+            "help",
+            "aboutWindow",
+            "settings",
             "extMainScreen",
             "filmrent_Critic.about",
             "filmrent_Movies",
@@ -52,6 +55,6 @@ public class CriticRole extends AnnotatedRoleDefinition {
 
     @Override
     public String getLocName() {
-        return "Клиент";
+        return "Пользователь";
     }
 }

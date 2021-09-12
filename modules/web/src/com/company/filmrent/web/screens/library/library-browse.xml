@@ -36,7 +36,9 @@
                 <action id="remove" type="remove"/>
             </actions>
             <columns>
-                <column id="critic"/>
+                <group>
+                    <column id="critic"/>
+                </group>
                 <column id="movie"/>
                 <column id="isLooked"/>
             </columns>

@@ -1,11 +1,10 @@
 package com.company.filmrent.service;
 
-import com.company.filmrent.core.role.CriticRole;
+import com.company.filmrent.core.role.UserRole;
 import com.company.filmrent.entity.user.Critic;
 import com.haulmont.cuba.core.global.*;
 import com.haulmont.cuba.security.entity.Group;
 import com.haulmont.cuba.security.entity.User;
-import com.haulmont.cuba.security.entity.UserRole;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
@@ -53,9 +52,9 @@ public class RegistrationServiceBean implements RegistrationService {
          * Another way is to set the default role by using the DB scripts. Set IS_DEFAULT_ROLE parameter to true in the insert script for the role.
          * Also, this parameter might be changed in the Role Editor screen.
          */
-        UserRole userRole = metadata.create(UserRole.class);
+        com.haulmont.cuba.security.entity.UserRole userRole = metadata.create(com.haulmont.cuba.security.entity.UserRole.class);
         userRole.setUser(user);
-        userRole.setRoleName(CriticRole.NAME);
+        userRole.setRoleName(UserRole.NAME);
 
         // Create Critic
         Critic critic = metadata.create(Critic.class);
