@@ -28,8 +28,8 @@ create table LocalUser (
     DELETE_TS timestamp,
     DELETED_BY varchar(50),
     --
-    User_rang integer,
-    User_id uuid,
+    User_rang integer not null,
+    User_id uuid not null,
     --
     primary key (ID)
 )^

@@ -8,6 +8,7 @@ import com.haulmont.cuba.core.global.DeletePolicy;
 import com.haulmont.cuba.security.entity.User;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Table(name = "LocalUser")
 @Entity(name = "filmrent_Critic")
@@ -15,13 +16,15 @@ import javax.persistence.*;
 public class Critic extends StandardEntity {
     private static final long serialVersionUID = -2731781279276514108L;
 
-    @Column(name = "User_rang")
+    @Column(name = "User_rang", nullable = false)
+    @NotNull
     private Integer userRang;
 
     @OnDeleteInverse(DeletePolicy.CASCADE)
     @OnDelete(DeletePolicy.CASCADE)
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "User_id")
+    @NotNull
     private User user;
 
     public Integer getUserRang() {
