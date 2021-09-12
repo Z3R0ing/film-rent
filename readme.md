@@ -9,7 +9,7 @@ Film card
 Films list
 ![Films list](screenshots/films.png "Films list")
 Edit film
-![Edit film](screenshots/Edit film.png "Edit film")
+![Edit film](screenshots/filmEdit.png "Edit film")
 Critic card
 ![Critic card](screenshots/criticAbout.png "Critic card")
 Critics list
