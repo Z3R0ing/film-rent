@@ -88,3 +88,12 @@ create index IDX_LIBRARY_ON_ID_USER on Library (ID_USER)^
 create index IDX_LIBRARY_ON_ID_MOVIE on Library (ID_MOVIE)^
 -- end LIBRARY
 ```
+
+#JPQL queries examples
+```jpql
+select l from filmrent_Library l where l.movie = :movie and l.critic = :critic
+
+select c from filmrent_Critic c where c.user = :user
+
+select m from filmrent_Movie m
+```
