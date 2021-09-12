@@ -1,5 +1,6 @@
 package com.company.filmrent.core.role;
 
+import com.company.filmrent.entity.library.Library;
 import com.company.filmrent.entity.movie.Movie;
 import com.company.filmrent.entity.user.Critic;
 import com.haulmont.cuba.security.app.role.AnnotatedRoleDefinition;
@@ -12,14 +13,16 @@ import com.haulmont.cuba.security.role.EntityAttributePermissionsContainer;
 import com.haulmont.cuba.security.role.EntityPermissionsContainer;
 import com.haulmont.cuba.security.role.ScreenPermissionsContainer;
 
-@Role(name = ClientRole.NAME)
-public class ClientRole extends AnnotatedRoleDefinition {
-    public final static String NAME = "Client";
+@Role(name = CriticRole.NAME)
+public class CriticRole extends AnnotatedRoleDefinition {
+    public final static String NAME = "Critic";
 
     @EntityAccess(entityClass = Movie.class,
             operations = {EntityOp.READ})
     @EntityAccess(entityClass = Critic.class,
             operations = {EntityOp.READ})
+    @EntityAccess(entityClass = Library.class,
+            operations = {EntityOp.READ, EntityOp.CREATE, EntityOp.DELETE, EntityOp.UPDATE})
     @Override
     public EntityPermissionsContainer entityPermissions() {
         return super.entityPermissions();
@@ -27,6 +30,7 @@ public class ClientRole extends AnnotatedRoleDefinition {
 
     @EntityAttributeAccess(entityClass = Movie.class, modify = "*")
     @EntityAttributeAccess(entityClass = Critic.class, modify = "*")
+    @EntityAttributeAccess(entityClass = Library.class, modify = "*")
     @Override
     public EntityAttributePermissionsContainer entityAttributePermissions() {
         return super.entityAttributePermissions();
@@ -37,7 +41,8 @@ public class ClientRole extends AnnotatedRoleDefinition {
             "filmrent_Critic.about",
             "filmrent_Movies",
             "filmrent_MovieCard",
-            "filmrent_Movie.more"
+            "filmrent_Movie.more",
+            "filmrent_movieList"
     })
     @Override
     public ScreenPermissionsContainer screenPermissions() {

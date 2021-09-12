@@ -1,6 +1,6 @@
 package com.company.filmrent.service;
 
-import com.company.filmrent.core.role.ClientRole;
+import com.company.filmrent.core.role.CriticRole;
 import com.company.filmrent.entity.user.Critic;
 import com.haulmont.cuba.core.global.*;
 import com.haulmont.cuba.security.entity.Group;
@@ -55,7 +55,7 @@ public class RegistrationServiceBean implements RegistrationService {
          */
         UserRole userRole = metadata.create(UserRole.class);
         userRole.setUser(user);
-        userRole.setRoleName(ClientRole.NAME);
+        userRole.setRoleName(CriticRole.NAME);
 
         // Create Critic
         Critic critic = metadata.create(Critic.class);
