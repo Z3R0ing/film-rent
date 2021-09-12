@@ -18,5 +18,7 @@ Critic edit
 ![Critic edit](screenshots/criticsEdit.png "Critic edit")
 Library view
 ![Library view](screenshots/libraryView.png "Library view")
+Library list
+![Library list](screenshots/libraryList.png "Library edit")
 Library edit
 ![Library list](screenshots/libraryEdit.png "Library edit")
