@@ -7,6 +7,7 @@
                   class="com.company.filmrent.entity.movie.Movie"
                   view="movie-view">
             <loader id="movieDl"/>
+            <collection id="movieGenresDc" property="movieGenres"/>
         </instance>
     </data>
     <dialogMode height="AUTO"
@@ -14,7 +15,7 @@
                 modal="true"
                 forceDialog="true"/>
     <layout expand="vbox" spacing="true">
-        <vbox id="vbox" spacing="true">
+        <vbox id="vbox" spacing="true" width="100%">
             <form id="form" dataContainer="movieDc">
                 <column>
                     <textField id="titleField" property="title" editable="false"/>
@@ -30,6 +31,13 @@
                     <action id="addUnLooked" caption="msg://movieMore.donnotlooked"/>
                 </actions>
             </popupButton>
+            <groupBox id="movieGenresBox" caption="msg://com.company.filmrent.entity.movie/Movie.movieGenres" expand="movieGenresTable" height="AUTO" width="100%">
+                <table id="movieGenresTable" dataContainer="movieGenresDc" width="100%" columnHeaderVisible="false">
+                    <columns>
+                        <column id="genre" link="true" linkInvoke="openMoviesOfGenre"/>
+                    </columns>
+                </table>
+            </groupBox>
         </vbox>
     </layout>
 </window>

@@ -36,7 +36,7 @@ public class ExtMainScreen extends MainScreen {
 
     @Subscribe("movieBtn")
     public void onMovieBtnClick(Button.ClickEvent event) {
-        Movies movies = screenBuilders.screen(this).withScreenClass(Movies.class).build();
+        Movies movies = screenBuilders.screen(this).withScreenClass(Movies.class).withOpenMode(OpenMode.THIS_TAB).build();
         movies.setMovies(moviesService.getMovies());
         movies.setCaption(messages.getMessage(this.getClass(), "extMainScreen.films"));
         movies.show();

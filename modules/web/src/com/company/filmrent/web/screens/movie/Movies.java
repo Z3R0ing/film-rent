@@ -1,15 +1,16 @@
 package com.company.filmrent.web.screens.movie;
 
+import com.company.filmrent.entity.genres.Genre;
+import com.company.filmrent.entity.library.Library;
 import com.company.filmrent.entity.movie.Movie;
+import com.company.filmrent.service.GenresService;
 import com.company.filmrent.service.MoviesService;
 import com.haulmont.cuba.core.global.DataManager;
 import com.haulmont.cuba.gui.Fragments;
+import com.haulmont.cuba.gui.ScreenBuilders;
 import com.haulmont.cuba.gui.UiComponents;
 import com.haulmont.cuba.gui.components.*;
-import com.haulmont.cuba.gui.screen.Screen;
-import com.haulmont.cuba.gui.screen.Subscribe;
-import com.haulmont.cuba.gui.screen.UiController;
-import com.haulmont.cuba.gui.screen.UiDescriptor;
+import com.haulmont.cuba.gui.screen.*;
 import com.haulmont.cuba.gui.xml.layout.ComponentsFactory;
 
 import javax.inject.Inject;
@@ -21,16 +22,43 @@ import java.util.UUID;
 public class Movies extends Screen {
 
     @Inject
+    private GenresService genresService;
+    @Inject
+    private MoviesService moviesService;
+    @Inject
+    private ScreenBuilders screenBuilders;
+    @Inject
     private Fragments fragments;
     @Inject
     private UiComponents uiComponents;
     @Inject
     private VBoxLayout vbox;
+    @Inject
+    private HBoxLayout genresBox;
 
     private List<Movie> movies;
 
     @Subscribe
     public void onBeforeShow(BeforeShowEvent event) {
+        initGenresButton();
+        initGridWithFilms();
+    }
+
+    private void initGenresButton() {
+        genresService.getUsedGenres().forEach(genre -> {
+            Button button = uiComponents.create(Button.class);
+            button.setCaption(genre.getTitle());
+            button.addClickListener(clickEvent -> {
+                Movies movies = screenBuilders.screen(this).withScreenClass(Movies.class).withOpenMode(OpenMode.NEW_TAB).build();
+                movies.setMovies(moviesService.getMoviesByGenres(genre));
+                movies.setCaption(genre.getTitle());
+                movies.show();
+            });
+            genresBox.add(button);
+        });
+    }
+
+    private void initGridWithFilms() {
         int gridSize = (movies.size() / 2) + 1;
         gridSize = (gridSize < 4) ? 4 : gridSize;
         GridLayout gridLayout = uiComponents.create(GridLayout.class);

@@ -4,7 +4,8 @@
         messagesPack="com.company.filmrent.web.screens.movie">
     <layout expand="vbox">
         <vbox id="vbox" spacing="true">
-
+            <hbox id="genresBox" spacing="true">
+            </hbox>
         </vbox>
     </layout>
 </window>

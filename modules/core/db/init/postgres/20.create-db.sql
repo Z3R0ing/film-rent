@@ -8,3 +8,9 @@ alter table Library add constraint FK_LIBRARY_ON_ID_MOVIE foreign key (ID_MOVIE)
 create index IDX_LIBRARY_ON_ID_USER on Library (ID_USER)^
 create index IDX_LIBRARY_ON_ID_MOVIE on Library (ID_MOVIE)^
 -- end LIBRARY
+-- begin MOVIE_GENRES
+alter table Movie_genres add constraint FK_MOVIE_GENRES_ON_MOVIE foreign key (MOVIE_ID) references Movies(ID)^
+alter table Movie_genres add constraint FK_MOVIE_GENRES_ON_GENRE foreign key (GENRE_ID) references Genres(ID)^
+create index IDX_MOVIE_GENRES_ON_MOVIE on Movie_genres (MOVIE_ID)^
+create index IDX_MOVIE_GENRES_ON_GENRE on Movie_genres (GENRE_ID)^
+-- end MOVIE_GENRES

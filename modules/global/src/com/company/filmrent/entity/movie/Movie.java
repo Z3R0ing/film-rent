@@ -1,13 +1,18 @@
 package com.company.filmrent.entity.movie;
 
+import com.company.filmrent.entity.genres.MovieGenre;
+import com.haulmont.chile.core.annotations.Composition;
 import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
+import com.haulmont.cuba.core.entity.annotation.OnDelete;
+import com.haulmont.cuba.core.global.DeletePolicy;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
+import java.util.List;
 
 @Table(name = "Movies")
 @Entity(name = "filmrent_Movie")
@@ -33,6 +38,11 @@ public class Movie extends StandardEntity {
     @Column(name = "Num_of_rating", nullable = false)
     @NotNull
     private Integer numOfRating;
+
+    @Composition
+    @OnDelete(DeletePolicy.CASCADE)
+    @OneToMany(mappedBy = "movie")
+    private List<MovieGenre> movieGenres;
 
     public Integer getNumOfRating() {
         return numOfRating;
@@ -64,5 +74,14 @@ public class Movie extends StandardEntity {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+
+    public List<MovieGenre> getMovieGenres() {
+        return movieGenres;
+    }
+
+    public void setMovieGenres(List<MovieGenre> movieGenres) {
+        this.movieGenres = movieGenres;
     }
 }

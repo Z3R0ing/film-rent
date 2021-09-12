@@ -15,6 +15,7 @@
                 <entry key="filmrent_MoviesService" value="com.company.filmrent.service.MoviesService"/>
                 <entry key="filmrent_CriticService" value="com.company.filmrent.service.CriticService"/>
                 <entry key="filmrent_LibraryService" value="com.company.filmrent.service.LibraryService"/>
+                <entry key="filmrent_GenresService" value="com.company.filmrent.service.GenresService"/>
             </map>
         </property>
     </bean>

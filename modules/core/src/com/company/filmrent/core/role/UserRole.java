@@ -1,5 +1,7 @@
 package com.company.filmrent.core.role;
 
+import com.company.filmrent.entity.genres.Genre;
+import com.company.filmrent.entity.genres.MovieGenre;
 import com.company.filmrent.entity.library.Library;
 import com.company.filmrent.entity.movie.Movie;
 import com.company.filmrent.entity.user.Critic;
@@ -23,6 +25,10 @@ public class UserRole extends AnnotatedRoleDefinition {
             operations = {EntityOp.READ})
     @EntityAccess(entityClass = Library.class,
             operations = {EntityOp.READ, EntityOp.CREATE, EntityOp.DELETE, EntityOp.UPDATE})
+    @EntityAccess(entityClass = Genre.class,
+            operations = {EntityOp.READ})
+    @EntityAccess(entityClass = MovieGenre.class,
+            operations = {EntityOp.READ})
     @Override
     public EntityPermissionsContainer entityPermissions() {
         return super.entityPermissions();
@@ -31,6 +37,8 @@ public class UserRole extends AnnotatedRoleDefinition {
     @EntityAttributeAccess(entityClass = Movie.class, modify = "*")
     @EntityAttributeAccess(entityClass = Critic.class, modify = "*")
     @EntityAttributeAccess(entityClass = Library.class, modify = "*")
+    @EntityAttributeAccess(entityClass = Genre.class, modify = "*")
+    @EntityAttributeAccess(entityClass = MovieGenre.class, modify = "*")
     @Override
     public EntityAttributePermissionsContainer entityAttributePermissions() {
         return super.entityAttributePermissions();
@@ -40,13 +48,13 @@ public class UserRole extends AnnotatedRoleDefinition {
             "help",
             "aboutWindow",
             "settings",
+            "filmRentMenu",
             "extMainScreen",
             "filmrent_Critic.about",
             "filmrent_Movies",
             "filmrent_MovieCard",
             "filmrent_Movie.more",
-            "filmrent_library",
-            "filmRentMenu"
+            "filmrent_library"
     })
     @Override
     public ScreenPermissionsContainer screenPermissions() {

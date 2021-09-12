@@ -52,3 +52,36 @@ create table Library (
     primary key (ID)
 )^
 -- end LIBRARY
+-- begin GENRES
+create table Genres (
+    ID uuid,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    Genre_title varchar(255) not null,
+    --
+    primary key (ID)
+)^
+-- end GENRES
+-- begin MOVIE_GENRES
+create table Movie_genres (
+    ID uuid,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    Movie_id uuid not null,
+    Genre_id uuid not null,
+    --
+    primary key (ID)
+)^
+-- end MOVIE_GENRES
