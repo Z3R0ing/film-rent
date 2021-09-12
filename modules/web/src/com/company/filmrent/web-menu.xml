@@ -6,8 +6,11 @@
         <item id="entityInspector.browse"/>
         <item screen="filmrent_Movie.browse" caption="mainMsg://menu_config.filmrent_Movie.browse"/>
         <item screen="filmrent_Critic.browse" caption="mainMsg://menu_config.filmrent_Critic.browse"/>
+        <item screen="filmrent_Library.browse" caption="mainMsg://menu_config.filmrent_Library.browse"/>
     </menu>
-    <menu id="filmRentMenu">
+    <menu id="filmRentMenu" caption="mainMsg://menu_config.application-filmrent">
+        <item screen="filmrent_library" caption="mainMsg://menu_config.filmrent_library"/>
+        <item screen="filmrent_Critic.about" caption="mainMsg://menu_config.filmrent_Critic.about"/>
     </menu>
     <menu id="help">
         <item id="aboutWindow" openType="DIALOG"/>

@@ -1,25 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
         caption="msg://criticAbout.caption"
-        focusComponent="form"
         messagesPack="com.company.filmrent.web.screens.critic">
-    <data>
-        <instance id="criticDc"
-                  class="com.company.filmrent.entity.user.Critic">
-            <view extends="critic-view">
-                <property name="user" view="_minimal"/>
-            </view>
-            <loader/>
-        </instance>
-    </data>
-    <dialogMode height="600"
-                width="800"/>
-    <layout expand="form" spacing="true">
-        <form id="form" dataContainer="criticDc">
-            <column width="350px">
-                <textField id="userRangField" property="userRang" editable="false"/>
-                <textField id="userName" property="user.login" editable="false"/>
-            </column>
-        </form>
+    <layout spacing="true">
+        <hbox spacing="true">
+            <vbox id="form">
+                <textField id="userRangField" editable="false" caption="msg://Critic.userRang"/>
+                <textField id="userName" editable="false" caption="msg://criticAbout.login"/>
+            </vbox>
+            <hbox>
+                <button id="libraryBtn"
+                        icon="font-icon:BOOK"
+                        caption="msg://criticAbout.library"
+                        width="200px"
+                        height="200px"/>
+            </hbox>
+        </hbox>
     </layout>
 </window>

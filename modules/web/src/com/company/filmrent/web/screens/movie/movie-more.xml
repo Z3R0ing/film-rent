@@ -6,21 +6,30 @@
         <instance id="movieDc"
                   class="com.company.filmrent.entity.movie.Movie"
                   view="movie-view">
-            <loader/>
+            <loader id="movieDl"/>
         </instance>
     </data>
     <dialogMode height="AUTO"
                 width="AUTO"
                 modal="true"
                 forceDialog="true"/>
-    <layout expand="form" spacing="true">
-        <form id="form" dataContainer="movieDc">
-            <column>
-                <textField id="titleField" property="title" editable="false"/>
-                <textField id="timeField" property="time" editable="false"/>
-                <dateField id="dataReleaseField" property="dataRelease" editable="false"/>
-                <textField id="numOfRatingField" property="numOfRating" editable="false"/>
-            </column>
-        </form>
+    <layout expand="vbox" spacing="true">
+        <vbox id="vbox" spacing="true">
+            <form id="form" dataContainer="movieDc">
+                <column>
+                    <textField id="titleField" property="title" editable="false"/>
+                    <textField id="timeField" property="time" editable="false"/>
+                    <dateField id="dataReleaseField" property="dataRelease" editable="false"/>
+                    <textField id="numOfRatingField" property="numOfRating" editable="false"/>
+                </column>
+            </form>
+            <popupButton id="popupAdd"
+                         caption="msg://movieMore.addBtn">
+                <actions>
+                    <action id="addLooked" caption="msg://movieMore.looked"/>
+                    <action id="addUnLooked" caption="msg://movieMore.donnotlooked"/>
+                </actions>
+            </popupButton>
+        </vbox>
     </layout>
 </window>

@@ -42,7 +42,8 @@ public class CriticRole extends AnnotatedRoleDefinition {
             "filmrent_Movies",
             "filmrent_MovieCard",
             "filmrent_Movie.more",
-            "filmrent_movieList"
+            "filmrent_library",
+            "filmRentMenu"
     })
     @Override
     public ScreenPermissionsContainer screenPermissions() {

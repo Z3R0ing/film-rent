@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://libraryScreen.caption"
+        messagesPack="com.company.filmrent.web.screens.library">
+    <data>
+        <collection id="librariesDc"
+                    class="com.company.filmrent.entity.library.Library">
+            <view extends="library-view"/>
+            <loader id="librariesDl">
+                <query>
+                    <![CDATA[select e from filmrent_Library e where e.critic = :critic]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <layout expand="vbox"
+            spacing="true">
+        <vbox id="vbox" spacing="true">
+            <groupBox id="lookedBox" spacing="true" caption="msg://libraryScreen.looked" captionAsHtml="true"/>
+            <groupBox id="unlookedBox" spacing="true" caption="msg://libraryScreen.unlooked" captionAsHtml="true"/>
+        </vbox>
+    </layout>
+</window>

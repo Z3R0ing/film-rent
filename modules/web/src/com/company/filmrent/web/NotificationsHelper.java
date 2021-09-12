@@ -18,5 +18,12 @@ public class NotificationsHelper {
                 .withCaption(messages.getMainMessage("unauthHead"))
                 .withDescription(messages.getMainMessage("unauthDesc"));
     }
-    
+
+    public static Notifications.NotificationBuilder getDBFailNotification(Window window) {
+        ScreenContext screenContext = ComponentsHelper.getScreenContext(window);
+        Notifications notifications = screenContext.getNotifications();
+        return notifications.create(Notifications.NotificationType.ERROR)
+                .withCaption(messages.getMainMessage("DBfailHead"))
+                .withDescription(messages.getMainMessage("DBfailDesc"));
+    }
 }

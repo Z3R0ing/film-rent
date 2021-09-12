@@ -4,10 +4,12 @@ import com.company.filmrent.service.CriticService;
 import com.company.filmrent.service.MoviesService;
 import com.company.filmrent.web.NotificationsHelper;
 import com.company.filmrent.web.screens.critic.CriticAbout;
+import com.company.filmrent.web.screens.library.LibraryScreen;
 import com.company.filmrent.web.screens.movie.Movies;
 import com.haulmont.cuba.core.global.Messages;
 import com.haulmont.cuba.gui.ScreenBuilders;
 import com.haulmont.cuba.gui.components.Button;
+import com.haulmont.cuba.gui.screen.OpenMode;
 import com.haulmont.cuba.gui.screen.Subscribe;
 import com.haulmont.cuba.gui.screen.UiController;
 import com.haulmont.cuba.gui.screen.UiDescriptor;
@@ -43,8 +45,8 @@ public class ExtMainScreen extends MainScreen {
     @Subscribe("profileBtn")
     public void onProfileBtnClick(Button.ClickEvent event) {
         if(isLogin()) {
-            CriticAbout criticAbout = screenBuilders.screen(this).withScreenClass(CriticAbout.class).build();
-            criticAbout.setEntityToEdit(criticService.getCurrentCritic());
+            CriticAbout criticAbout = screenBuilders.screen(this).withScreenClass(CriticAbout.class).withOpenMode(OpenMode.THIS_TAB).build();
+            criticAbout.setCritic(criticService.getCurrentCritic());
             criticAbout.show();
         } else {
             NotificationsHelper.getUnauthNotification(this.getWindow()).show();
@@ -54,7 +56,9 @@ public class ExtMainScreen extends MainScreen {
     @Subscribe("libraryBtn")
     public void onLibraryBtnClick(Button.ClickEvent event) {
         if(isLogin()) {
-
+            LibraryScreen libraryScreen = screenBuilders.screen(this).withScreenClass(LibraryScreen.class).withOpenMode(OpenMode.THIS_TAB).build();
+            libraryScreen.setCritic(criticService.getCurrentCritic());
+            libraryScreen.show();
         } else {
             NotificationsHelper.getUnauthNotification(this.getWindow()).show();
         }

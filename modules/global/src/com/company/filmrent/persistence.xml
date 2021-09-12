@@ -4,5 +4,6 @@
 
         <class>com.company.filmrent.entity.movie.Movie</class>
         <class>com.company.filmrent.entity.user.Critic</class>
+        <class>com.company.filmrent.entity.library.Library</class>
     </persistence-unit>
 </persistence>
