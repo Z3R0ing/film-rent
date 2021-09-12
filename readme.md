@@ -1,4 +1,5 @@
-#Screens
+# Screens
+
 Main page
 ![Main page](screenshots/main.png "Main page")
 Login page
@@ -24,7 +25,7 @@ Library list
 Library edit
 ![Library list](screenshots/libraryEdit.png "Library edit")
 
-#SQL scripts
+# SQL scripts
 
 ```sql
 -- begin MOVIES
@@ -89,8 +90,9 @@ create index IDX_LIBRARY_ON_ID_MOVIE on Library (ID_MOVIE)^
 -- end LIBRARY
 ```
 
-#JPQL queries examples
-```jpql
+# JPQL queries examples
+
+```hql
 select l from filmrent_Library l where l.movie = :movie and l.critic = :critic
 
 select c from filmrent_Critic c where c.user = :user
