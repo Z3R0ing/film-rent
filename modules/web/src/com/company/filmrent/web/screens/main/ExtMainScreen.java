@@ -44,7 +44,7 @@ public class ExtMainScreen extends MainScreen {
     public void onProfileBtnClick(Button.ClickEvent event) {
         if(isLogin()) {
             CriticAbout criticAbout = screenBuilders.screen(this).withScreenClass(CriticAbout.class).build();
-            criticAbout.setEntityToEdit(criticService.getCriticByUser(userSession.getUser()));
+            criticAbout.setEntityToEdit(criticService.getCurrentCritic());
             criticAbout.show();
         } else {
             NotificationsHelper.getUnauthNotification(this.getWindow()).show();
