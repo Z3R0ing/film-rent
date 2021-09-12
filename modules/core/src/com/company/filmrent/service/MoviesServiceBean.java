@@ -17,6 +17,7 @@ public class MoviesServiceBean implements MoviesService {
     public List<Movie> getMovies() {
         return dataManager.load(Movie.class)
                 .query("select m from filmrent_Movie m")
+                .view("movie-view")
                 .list();
     }
 }

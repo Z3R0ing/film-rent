@@ -23,6 +23,7 @@ public class CriticServiceBean implements CriticService {
         Optional<Critic> optional = dataManager.load(Critic.class)
                 .query("select c from filmrent_Critic c where c.user = :user")
                 .parameter("user", user)
+                .view("critic-view")
                 .optional();
         return optional.orElse(null);
     }
