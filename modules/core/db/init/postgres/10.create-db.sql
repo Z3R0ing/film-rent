@@ -85,8 +85,8 @@ create table Movie_genres (
     primary key (ID)
 )^
 -- end MOVIE_GENRES
--- begin FILMRENT_ACTOR
-create table FILMRENT_ACTOR (
+-- begin ACTORS
+create table Actors (
     ID uuid,
     VERSION integer not null,
     CREATE_TS timestamp,
@@ -96,15 +96,15 @@ create table FILMRENT_ACTOR (
     DELETE_TS timestamp,
     DELETED_BY varchar(50),
     --
-    Actor_firstname varchar(255),
-    Actor_lastname varchar(255),
-    Actor_gender varchar(255),
+    Actor_firstname varchar(255) not null,
+    Actor_lastname varchar(255) not null,
+    Actor_gender varchar(255) not null,
     --
     primary key (ID)
 )^
--- end FILMRENT_ACTOR
--- begin FILMRENT_MOVIE_CAST
-create table FILMRENT_MOVIE_CAST (
+-- end ACTORS
+-- begin MOVIES_CAST
+create table Movies_cast (
     ID uuid,
     VERSION integer not null,
     CREATE_TS timestamp,
@@ -116,7 +116,8 @@ create table FILMRENT_MOVIE_CAST (
     --
     Movie_id uuid not null,
     Actor_id uuid not null,
+    Role varchar(255) not null,
     --
     primary key (ID)
 )^
--- end FILMRENT_MOVIE_CAST
+-- end MOVIES_CAST

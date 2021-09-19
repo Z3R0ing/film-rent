@@ -131,8 +131,8 @@ alter table Movie_genres add constraint FK_MOVIE_GENRES_ON_GENRE foreign key (GE
 create index IDX_MOVIE_GENRES_ON_MOVIE on Movie_genres (MOVIE_ID)^
 create index IDX_MOVIE_GENRES_ON_GENRE on Movie_genres (GENRE_ID)^
 -- end MOVIE_GENRES
--- begin FILMRENT_ACTOR
-create table FILMRENT_ACTOR (
+-- begin ACTORS
+create table Actors (
     ID uuid,
     VERSION integer not null,
     CREATE_TS timestamp,
@@ -142,15 +142,15 @@ create table FILMRENT_ACTOR (
     DELETE_TS timestamp,
     DELETED_BY varchar(50),
     --
-    Actor_firstname varchar(255),
-    Actor_lastname varchar(255),
-    Actor_gender varchar(255),
+    Actor_firstname varchar(255) not null,
+    Actor_lastname varchar(255) not null,
+    Actor_gender varchar(255) not null,
     --
     primary key (ID)
 )^
--- end FILMRENT_ACTOR
--- begin FILMRENT_MOVIE_CAST
-create table FILMRENT_MOVIE_CAST (
+-- end ACTORS
+-- begin MOVIES_CAST
+create table Movies_cast (
     ID uuid,
     VERSION integer not null,
     CREATE_TS timestamp,
@@ -162,14 +162,16 @@ create table FILMRENT_MOVIE_CAST (
     --
     Movie_id uuid not null,
     Actor_id uuid not null,
+    Role varchar(255) not null,
     --
     primary key (ID)
 )^
-alter table FILMRENT_MOVIE_CAST add constraint FK_FILMRENT_MOVIE_CAST_ON_MOVIE foreign key (MOVIE_ID) references Movies(ID)^
-alter table FILMRENT_MOVIE_CAST add constraint FK_FILMRENT_MOVIE_CAST_ON_ACTOR foreign key (ACTOR_ID) references FILMRENT_ACTOR(ID)^
-create index IDX_FILMRENT_MOVIE_CAST_ON_MOVIE on FILMRENT_MOVIE_CAST (MOVIE_ID)^
-create index IDX_FILMRENT_MOVIE_CAST_ON_ACTOR on FILMRENT_MOVIE_CAST (ACTOR_ID)^
--- end FILMRENT_MOVIE_CAST
+-- begin MOVIES_CAST
+alter table Movies_cast add constraint FK_MOVIES_CAST_ON_MOVIE foreign key (MOVIE_ID) references Movies(ID)^
+alter table Movies_cast add constraint FK_MOVIES_CAST_ON_ACTOR foreign key (ACTOR_ID) references Actors(ID)^
+create index IDX_MOVIES_CAST_ON_MOVIE on Movies_cast (MOVIE_ID)^
+create index IDX_MOVIES_CAST_ON_ACTOR on Movies_cast (ACTOR_ID)^
+-- end MOVIES_CAST
 ```
 
 # JPQL queries examples

@@ -7,8 +7,9 @@ import com.haulmont.cuba.core.entity.annotation.OnDeleteInverse;
 import com.haulmont.cuba.core.global.DeletePolicy;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 
-@Table(name = "FILMRENT_MOVIE_CAST")
+@Table(name = "Movies_cast")
 @Entity(name = "filmrent_MovieCast")
 @NamePattern("%s in &s|actor,movie")
 public class MovieCast extends StandardEntity {
@@ -24,6 +25,10 @@ public class MovieCast extends StandardEntity {
     @JoinColumn(name = "Actor_id")
     private Actor actor;
 
+    @Column(name = "Role", nullable = false)
+    @NotEmpty(message = "{filmrent_MovieCast.role.validation.NotEmpty}")
+    private String role;
+
     public Movie getMovie() {
         return movie;
     }
@@ -38,5 +43,13 @@ public class MovieCast extends StandardEntity {
 
     public void setActor(Actor actor) {
         this.actor = actor;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }
