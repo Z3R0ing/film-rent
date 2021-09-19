@@ -131,7 +131,24 @@ alter table Movie_genres add constraint FK_MOVIE_GENRES_ON_GENRE foreign key (GE
 create index IDX_MOVIE_GENRES_ON_MOVIE on Movie_genres (MOVIE_ID)^
 create index IDX_MOVIE_GENRES_ON_GENRE on Movie_genres (GENRE_ID)^
 -- end MOVIE_GENRES
-
+-- begin FILMRENT_ACTOR
+create table FILMRENT_ACTOR (
+    ID uuid,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    Actor_firstname varchar(255),
+    Actor_lastname varchar(255),
+    Actor_gender varchar(255),
+    --
+    primary key (ID)
+)^
+-- end FILMRENT_ACTOR
 ```
 
 # JPQL queries examples

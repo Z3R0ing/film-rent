@@ -85,3 +85,21 @@ create table Movie_genres (
     primary key (ID)
 )^
 -- end MOVIE_GENRES
+-- begin FILMRENT_ACTOR
+create table FILMRENT_ACTOR (
+    ID uuid,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    Actor_firstname varchar(255),
+    Actor_lastname varchar(255),
+    Actor_gender varchar(255),
+    --
+    primary key (ID)
+)^
+-- end FILMRENT_ACTOR
