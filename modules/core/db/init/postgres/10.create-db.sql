@@ -121,3 +121,20 @@ create table Movies_cast (
     primary key (ID)
 )^
 -- end MOVIES_CAST
+-- begin REVIEW
+create table Review (
+    ID uuid,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    Text_of_review varchar(255) not null,
+    Movie_id uuid not null,
+    --
+    primary key (ID)
+)^
+-- end REVIEW

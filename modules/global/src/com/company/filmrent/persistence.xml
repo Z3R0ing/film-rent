@@ -8,5 +8,6 @@
         <class>com.company.filmrent.entity.genres.MovieGenre</class>
         <class>com.company.filmrent.entity.actor.Actor</class>
         <class>com.company.filmrent.entity.actor.MovieCast</class>
+        <class>com.company.filmrent.entity.review.Review</class>
     </persistence-unit>
 </persistence>

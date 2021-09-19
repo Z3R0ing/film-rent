@@ -20,3 +20,7 @@ alter table Movies_cast add constraint FK_MOVIES_CAST_ON_ACTOR foreign key (ACTO
 create index IDX_MOVIES_CAST_ON_MOVIE on Movies_cast (MOVIE_ID)^
 create index IDX_MOVIES_CAST_ON_ACTOR on Movies_cast (ACTOR_ID)^
 -- end MOVIES_CAST
+-- begin REVIEW
+alter table Review add constraint FK_REVIEW_ON_MOVIE foreign key (MOVIE_ID) references Movies(ID)^
+create index IDX_REVIEW_ON_MOVIE on Review (MOVIE_ID)^
+-- end REVIEW
