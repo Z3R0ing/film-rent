@@ -103,3 +103,20 @@ create table FILMRENT_ACTOR (
     primary key (ID)
 )^
 -- end FILMRENT_ACTOR
+-- begin FILMRENT_MOVIE_CAST
+create table FILMRENT_MOVIE_CAST (
+    ID uuid,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    Movie_id uuid not null,
+    Actor_id uuid not null,
+    --
+    primary key (ID)
+)^
+-- end FILMRENT_MOVIE_CAST

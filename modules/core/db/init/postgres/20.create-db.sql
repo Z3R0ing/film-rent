@@ -14,3 +14,9 @@ alter table Movie_genres add constraint FK_MOVIE_GENRES_ON_GENRE foreign key (GE
 create index IDX_MOVIE_GENRES_ON_MOVIE on Movie_genres (MOVIE_ID)^
 create index IDX_MOVIE_GENRES_ON_GENRE on Movie_genres (GENRE_ID)^
 -- end MOVIE_GENRES
+-- begin FILMRENT_MOVIE_CAST
+alter table FILMRENT_MOVIE_CAST add constraint FK_FILMRENT_MOVIE_CAST_ON_MOVIE foreign key (MOVIE_ID) references Movies(ID)^
+alter table FILMRENT_MOVIE_CAST add constraint FK_FILMRENT_MOVIE_CAST_ON_ACTOR foreign key (ACTOR_ID) references FILMRENT_ACTOR(ID)^
+create index IDX_FILMRENT_MOVIE_CAST_ON_MOVIE on FILMRENT_MOVIE_CAST (MOVIE_ID)^
+create index IDX_FILMRENT_MOVIE_CAST_ON_ACTOR on FILMRENT_MOVIE_CAST (ACTOR_ID)^
+-- end FILMRENT_MOVIE_CAST

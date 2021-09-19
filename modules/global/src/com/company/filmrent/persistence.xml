@@ -7,5 +7,6 @@
         <class>com.company.filmrent.entity.genres.Genre</class>
         <class>com.company.filmrent.entity.genres.MovieGenre</class>
         <class>com.company.filmrent.entity.actor.Actor</class>
+        <class>com.company.filmrent.entity.actor.MovieCast</class>
     </persistence-unit>
 </persistence>
