@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://moviesGenres.caption"
+        messagesPack="com.company.filmrent.web.screens.reports">
+    <data readOnly="true">
+        <collection id="movieGenresDc"
+                    class="com.company.filmrent.entity.genres.MovieGenre"
+                    view="movieGenre-view">
+            <loader id="movieGenresDl">
+                <query>
+                    <![CDATA[select mg from filmrent_MovieGenre mg join mg.movie m where m in (select l.movie from filmrent_Library l where l.isLooked = TRUE and l.critic = :critic)]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <layout spacing="true" expand="forExport">
+        <hbox spacing="true">
+            <label value="msg://moviesGenres.caption" stylename="h2 bold"/>
+            <button action="forExport.excel"/>
+        </hbox>
+        <groupTable id="forExport" dataContainer="movieGenresDc" visible="true" width="100%"
+                    stylename="no-horizontal-lines no-vertical-lines borderless" fixedGrouping="true">
+            <actions>
+                <action id="excel" type="excel"/>
+            </actions>
+            <columns>
+                <group>
+                    <column id="genre"/>
+                </group>
+                <column id="movie.title"/>
+                <column id="whenLooked" caption="msg://monthMovies.looked"/>
+            </columns>
+            <rows/>
+        </groupTable>
+    </layout>
+</window>

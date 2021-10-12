@@ -60,7 +60,7 @@ public class Movies extends Screen {
 
     private void initGridWithFilms() {
         int gridSize = (movies.size() / 2) + 1;
-        gridSize = (gridSize < 4) ? 4 : gridSize;
+        gridSize = Math.max(gridSize, 4);
         GridLayout gridLayout = uiComponents.create(GridLayout.class);
         gridLayout.setRows(gridSize);
         gridLayout.setColumns(gridSize);

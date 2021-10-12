@@ -190,4 +190,8 @@ select mg.movie from filmrent_MovieGenre mg where mg.genre = :genre
 select g from filmrent_Genre g where g in (select mg.genre from filmrent_MovieGenre mg)
 
 select e from filmrent_Critic e where e.userRang > :rang
+
+select l.movie from filmrent_Library l where l.updateTs > :monthAgo and l.isLooked = TRUE and l.critic = :critic
+
+select mg from filmrent_MovieGenre mg join mg.movie m where m in (select l.movie from filmrent_Library l where l.isLooked = TRUE and l.critic = :critic)
 ```

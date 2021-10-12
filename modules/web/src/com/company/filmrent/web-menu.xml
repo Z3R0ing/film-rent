@@ -15,6 +15,8 @@
         <item screen="filmrent_library" caption="mainMsg://menu_config.filmrent_library"/>
         <item screen="filmrent_Critic.about" caption="mainMsg://menu_config.filmrent_Critic.about"/>
         <item screen="filmrent_Critic.list" caption="mainMsg://menu_config.filmrent_Critic.list"/>
+        <item screen="filmrent_MonthMovies" caption="mainMsg://menu_config.filmrent_MonthMovies"/>
+        <item screen="filmrent_MoviesGenres" caption="mainMsg://menu_config.filmrent_MoviesGenres"/>
     </menu>
     <menu id="help">
         <item id="aboutWindow" openType="DIALOG"/>

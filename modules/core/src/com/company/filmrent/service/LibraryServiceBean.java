@@ -84,12 +84,13 @@ public class LibraryServiceBean implements LibraryService {
         }
     }
 
-    private Library getMovieInLibrary(Movie movie, Critic critic) {
+    @Override
+    public Library getMovieInLibrary(Movie movie, Critic critic) {
         return dataManager.load(Library.class)
                 .query("select l from filmrent_Library l where l.movie = :movie and l.critic = :critic")
                 .parameter("critic", critic)
                 .parameter("movie", movie)
-                .view("_local")
+                .view("library-view")
                 .optional()
                 .orElse(null);
     }

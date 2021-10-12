@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://monthMovies.caption"
+        messagesPack="com.company.filmrent.web.screens.reports">
+    <data readOnly="true">
+        <collection id="moviesDc"
+                    class="com.company.filmrent.entity.movie.Movie"
+                    view="movie-view">
+            <loader id="moviesDl">
+                <query>
+                    <![CDATA[select l.movie from filmrent_Library l where l.updateTs > :monthAgo and l.isLooked = TRUE and l.critic = :critic]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <layout spacing="true" expand="vbox">
+        <hbox spacing="true">
+            <label value="msg://monthMovies.caption" stylename="h2 bold"/>
+            <button action="forExport.excel"/>
+        </hbox>
+        <label id="moviesCount" value="msg://monthMovies.atAll" stylename="h3 bold"/>
+        <vbox id="vbox" spacing="true">
+        </vbox>
+        <table id="forExport" dataContainer="moviesDc" visible="false" aggregatable="true" aggregationStyle="BOTTOM">
+            <actions>
+                <action id="excel" type="excel"/>
+            </actions>
+            <columns>
+                <column id="title">
+                    <aggregation type="COUNT" valueDescription="msg://monthMovies.atAll"/>
+                </column>
+                <column id="whenLooked" caption="msg://monthMovies.looked"/>
+            </columns>
+            <rows/>
+        </table>
+    </layout>
+</window>

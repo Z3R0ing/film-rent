@@ -39,4 +39,11 @@ public interface LibraryService {
      */
     boolean removeFromLibrary(Movie movie, Critic critic);
 
+    /**
+     * Возвращает фильм в библиотеке
+     * @param movie - фильм
+     * @param critic - владелец билиотеки
+     * @return null если такого фильма нет в библиотеке critic
+     */
+    Library getMovieInLibrary(Movie movie, Critic critic);
 }
