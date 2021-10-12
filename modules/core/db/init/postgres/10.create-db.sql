@@ -13,6 +13,7 @@ create table Movies (
     Movie_time integer not null,
     Movie_data_release date not null,
     Num_of_rating integer not null,
+    Movie_director varchar(255) not null,
     --
     primary key (ID)
 )^

@@ -24,6 +24,7 @@
                     <textField id="timeField" property="time" editable="false" stylename="borderless"/>
                     <dateField id="dataReleaseField" property="dataRelease" editable="false" stylename="borderless"/>
                     <textField id="numOfRatingField" property="numOfRating" editable="false" stylename="borderless"/>
+                    <textField id="directorField" property="director" editable="false" stylename="borderless"/>
                 </column>
             </form>
             <hbox spacing="true" width="100%">
@@ -60,8 +61,10 @@
         </vbox>
         <groupBox id="reviewsBox" caption="msg://com.company.filmrent.entity.movie/Movie.reviews"
                   expand="reviewsTable" height="AUTO" width="100%">
-            <table id="reviewsTable" dataContainer="reviewsDc" width="100%" columnHeaderVisible="false" multiLineCells="true"
-                   stylename="borderless no-horizontal-lines no-vertical-lines" emptyStateMessage="msg://movieMore.emptyReviews">
+            <table id="reviewsTable" dataContainer="reviewsDc" width="100%" columnHeaderVisible="false"
+                   multiLineCells="true"
+                   stylename="borderless no-horizontal-lines no-vertical-lines"
+                   emptyStateMessage="msg://movieMore.emptyReviews">
                 <actions>
                     <action id="create" type="create"/>
                 </actions>

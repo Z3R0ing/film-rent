@@ -37,6 +37,7 @@
                 <column id="time"/>
                 <column id="dataRelease"/>
                 <column id="numOfRating"/>
+                <column id="director"/>
             </columns>
             <rowsCount/>
             <buttonsPanel id="buttonsPanel"

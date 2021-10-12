@@ -41,6 +41,11 @@ public class Movie extends StandardEntity {
     @NotNull
     private Integer numOfRating;
 
+    @Column(name = "Movie_director", nullable = false)
+    @NotEmpty(message = "{msg://filmrent_Movie.director.validation.NotEmpty}")
+    @NotNull
+    private String director;
+
     @Composition
     @OnDelete(DeletePolicy.CASCADE)
     @OneToMany(mappedBy = "movie")
@@ -110,5 +115,13 @@ public class Movie extends StandardEntity {
 
     public void setReviews(List<Review> reviews) {
         this.reviews = reviews;
+    }
+
+    public String getDirector() {
+        return director;
+    }
+
+    public void setDirector(String director) {
+        this.director = director;
     }
 }

@@ -22,6 +22,7 @@
                 <textField id="timeField" property="time"/>
                 <dateField id="dataReleaseField" property="dataRelease"/>
                 <textField id="numOfRatingField" property="numOfRating"/>
+                <textField id="directorField" property="director"/>
             </column>
         </form>
         <groupBox id="movieGenresBox" caption="msg://com.company.filmrent.entity.movie/Movie.movieGenres">
