@@ -10,13 +10,16 @@ import com.haulmont.cuba.core.entity.Entity;
 import com.haulmont.cuba.core.global.Messages;
 import com.haulmont.cuba.gui.ScreenBuilders;
 import com.haulmont.cuba.gui.components.Action;
+import com.haulmont.cuba.gui.components.Label;
 import com.haulmont.cuba.gui.components.PopupButton;
+import com.haulmont.cuba.gui.components.actions.BaseAction;
 import com.haulmont.cuba.gui.model.InstanceContainer;
 import com.haulmont.cuba.gui.model.InstanceLoader;
 import com.haulmont.cuba.gui.screen.*;
 import com.company.filmrent.entity.movie.Movie;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 
 @UiController("filmrent_Movie.more")
 @UiDescriptor("movie-more.xml")
@@ -24,21 +27,23 @@ import javax.inject.Inject;
 public class MovieMore extends StandardEditor<Movie> {
 
     @Inject
-    private InstanceContainer<Movie> movieDc;
-    @Inject
-    private InstanceLoader<Movie> movieDl;
-    @Inject
-    private CriticService criticService;
-    @Inject
-    private PopupButton popupAdd;
-    @Inject
-    private LibraryService libraryService;
-    @Inject
     private Messages messages;
     @Inject
     private ScreenBuilders screenBuilders;
     @Inject
+    private CriticService criticService;
+    @Inject
     private MoviesService moviesService;
+    @Inject
+    private LibraryService libraryService;
+    @Inject
+    private InstanceLoader<Movie> movieDl;
+    @Inject
+    private PopupButton popupAdd;
+    @Inject
+    private Label<String> lookedLabel;
+    @Named("popupAdd.removeFromLibrary")
+    private BaseAction popupAddRemoveFromLibrary;
 
     @Subscribe
     public void onBeforeShow(BeforeShowEvent event) {
@@ -47,6 +52,14 @@ public class MovieMore extends StandardEditor<Movie> {
         if (critic != null) {
             if (libraryService.isInLibrary(getEditedEntity(), critic)) {
                 popupAdd.setCaption(messages.getMessage(this.getClass(), "movieMore.changeStatus"));
+                if (libraryService.getLooked(getEditedEntity(), critic)) {
+                    lookedLabel.setValue(messages.getMessage(this.getClass(), "movieMore.looked"));
+                } else {
+                    lookedLabel.setValue(messages.getMessage(this.getClass(), "movieMore.donnotlooked"));
+                }
+            } else {
+                popupAddRemoveFromLibrary.setVisible(false);
+                lookedLabel.setValue(messages.getMessage(this.getClass(), "movieMore.notInLibrary"));
             }
         } else {
             popupAdd.setVisible(false);
@@ -57,6 +70,7 @@ public class MovieMore extends StandardEditor<Movie> {
     public void onPopupAddAddLooked(Action.ActionPerformedEvent event) {
         if (libraryService.setLooked(getEditedEntity(), criticService.getCurrentCritic(), true)) {
             popupAdd.setCaption(messages.getMessage(this.getClass(), "movieMore.changeStatus"));
+            lookedLabel.setValue(messages.getMessage(this.getClass(), "movieMore.looked"));
             movieDl.load();
         } else {
             NotificationsHelper.getDBFailNotification(this.getWindow()).show();
@@ -67,9 +81,22 @@ public class MovieMore extends StandardEditor<Movie> {
     public void onPopupAddAddUnLooked(Action.ActionPerformedEvent event) {
         if (libraryService.setLooked(getEditedEntity(), criticService.getCurrentCritic(), false)) {
             popupAdd.setCaption(messages.getMessage(this.getClass(), "movieMore.changeStatus"));
+            lookedLabel.setValue(messages.getMessage(this.getClass(), "movieMore.donnotlooked"));
             movieDl.load();
         } else {
             NotificationsHelper.getDBFailNotification(this.getWindow()).show();
+        }
+    }
+
+    @Subscribe("popupAdd.removeFromLibrary")
+    public void onPopupRemoveFromLibrary(Action.ActionPerformedEvent event) {
+        if (libraryService.removeFromLibrary(getEditedEntity(), criticService.getCurrentCritic())) {
+            popupAdd.setCaption(messages.getMessage(this.getClass(), "movieMore.addBtn"));
+            popupAddRemoveFromLibrary.setVisible(false);
+            lookedLabel.setValue(messages.getMessage(this.getClass(), "movieMore.notInLibrary"));
+            movieDl.load();
+        } else {
+            NotificationsHelper.getWarningNotification(this.getWindow(), messages.getMessage(this.getClass(), "movieMore.notInLibrary")).show();
         }
     }
 

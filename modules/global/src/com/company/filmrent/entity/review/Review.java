@@ -17,10 +17,26 @@ public class Review extends StandardEntity {
 
     @Column(name = "Text_of_review", nullable = false)
     @NotEmpty(message = "{filmrent_Review.textOfReview.validation.NotEmpty}")
-    String textOfReview;
+    private String textOfReview;
 
     @OnDeleteInverse(DeletePolicy.CASCADE)
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "Movie_id")
     private Movie movie;
+
+    public String getTextOfReview() {
+        return textOfReview;
+    }
+
+    public void setTextOfReview(String textOfReview) {
+        this.textOfReview = textOfReview;
+    }
+
+    public Movie getMovie() {
+        return movie;
+    }
+
+    public void setMovie(Movie movie) {
+        this.movie = movie;
+    }
 }

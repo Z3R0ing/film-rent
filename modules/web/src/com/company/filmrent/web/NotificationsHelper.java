@@ -26,4 +26,10 @@ public class NotificationsHelper {
                 .withCaption(messages.getMainMessage("DBfailHead"))
                 .withDescription(messages.getMainMessage("DBfailDesc"));
     }
+    public static Notifications.NotificationBuilder getWarningNotification(Window window, String caption) {
+        ScreenContext screenContext = ComponentsHelper.getScreenContext(window);
+        Notifications notifications = screenContext.getNotifications();
+        return notifications.create(Notifications.NotificationType.WARNING)
+                .withCaption(caption);
+    }
 }

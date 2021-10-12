@@ -2,6 +2,7 @@ package com.company.filmrent.entity.movie;
 
 import com.company.filmrent.entity.actor.MovieCast;
 import com.company.filmrent.entity.genres.MovieGenre;
+import com.company.filmrent.entity.review.Review;
 import com.haulmont.chile.core.annotations.Composition;
 import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
@@ -50,6 +51,11 @@ public class Movie extends StandardEntity {
     @OneToMany(mappedBy = "movie")
     private List<MovieCast> movieCasts;
 
+    @Composition
+    @OnDelete(DeletePolicy.CASCADE)
+    @OneToMany(mappedBy = "movie")
+    private List<Review> reviews;
+
     public Integer getNumOfRating() {
         return numOfRating;
     }
@@ -82,7 +88,6 @@ public class Movie extends StandardEntity {
         this.title = title;
     }
 
-
     public List<MovieGenre> getMovieGenres() {
         return movieGenres;
     }
@@ -97,5 +102,13 @@ public class Movie extends StandardEntity {
 
     public void setMovieCasts(List<MovieCast> movieCasts) {
         this.movieCasts = movieCasts;
+    }
+
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
     }
 }

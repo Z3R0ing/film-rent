@@ -9,10 +9,11 @@
             <loader id="movieDl"/>
             <collection id="movieGenresDc" property="movieGenres"/>
             <collection id="movieCastsDc" property="movieCasts"/>
+            <collection id="reviewsDc" property="reviews"/>
         </instance>
     </data>
-    <dialogMode height="AUTO"
-                width="AUTO"
+    <dialogMode height="600"
+                width="800"
                 modal="true"
                 forceDialog="true"/>
     <layout expand="vbox" spacing="true">
@@ -25,22 +26,30 @@
                     <textField id="numOfRatingField" property="numOfRating" editable="false" stylename="borderless"/>
                 </column>
             </form>
-            <popupButton id="popupAdd"
-                         caption="msg://movieMore.addBtn">
-                <actions>
-                    <action id="addLooked" caption="msg://movieMore.looked"/>
-                    <action id="addUnLooked" caption="msg://movieMore.donnotlooked"/>
-                </actions>
-            </popupButton>
-            <groupBox id="movieGenresBox" caption="msg://com.company.filmrent.entity.movie/Movie.movieGenres" expand="movieGenresTable" height="AUTO" width="100%">
-                <table id="movieGenresTable" dataContainer="movieGenresDc" width="100%" columnHeaderVisible="false" stylename="borderless no-vertical-lines no-horizontal-lines no-stripes">
+            <hbox spacing="true" width="100%">
+                <label id="lookedLabel" stylename="bold" align="MIDDLE_RIGHT"/>
+                <popupButton id="popupAdd"
+                             caption="msg://movieMore.addBtn">
+                    <actions>
+                        <action id="addLooked" caption="msg://movieMore.looked"/>
+                        <action id="addUnLooked" caption="msg://movieMore.donnotlooked"/>
+                        <action id="removeFromLibrary" caption="msg://movieMore.removeFromLibrary"/>
+                    </actions>
+                </popupButton>
+            </hbox>
+            <groupBox id="movieGenresBox" caption="msg://com.company.filmrent.entity.movie/Movie.movieGenres"
+                      expand="movieGenresTable" height="AUTO" width="100%">
+                <table id="movieGenresTable" dataContainer="movieGenresDc" width="100%" columnHeaderVisible="false"
+                       stylename="borderless no-vertical-lines no-horizontal-lines no-stripes" showSelection="false">
                     <columns>
                         <column id="genre" link="true" linkInvoke="openMoviesOfGenre"/>
                     </columns>
                 </table>
             </groupBox>
-            <groupBox id="movieCastsBox" caption="msg://com.company.filmrent.entity.movie/Movie.movieCasts" expand="movieCastsTable" height="AUTO" width="100%">
-                <table id="movieCastsTable" dataContainer="movieCastsDc" width="100%" stylename="borderless no-horizontal-lines no-vertical-lines">
+            <groupBox id="movieCastsBox" caption="msg://com.company.filmrent.entity.movie/Movie.movieCasts"
+                      expand="movieCastsTable" height="AUTO" width="100%">
+                <table id="movieCastsTable" dataContainer="movieCastsDc" width="100%"
+                       stylename="borderless no-horizontal-lines no-vertical-lines" showSelection="false">
                     <columns>
                         <column id="actor"/>
                         <column id="actor.gender"/>
@@ -49,5 +58,21 @@
                 </table>
             </groupBox>
         </vbox>
+        <groupBox id="reviewsBox" caption="msg://com.company.filmrent.entity.movie/Movie.reviews"
+                  expand="reviewsTable" height="AUTO" width="100%">
+            <table id="reviewsTable" dataContainer="reviewsDc" width="100%" columnHeaderVisible="false" multiLineCells="true"
+                   stylename="borderless no-horizontal-lines no-vertical-lines" emptyStateMessage="msg://movieMore.emptyReviews">
+                <actions>
+                    <action id="create" type="create"/>
+                </actions>
+                <columns>
+                    <column id="createdBy"/>
+                    <column id="textOfReview"/>
+                </columns>
+                <buttonsPanel>
+                    <button action="reviewsTable.create" caption="mainMsg://actions.Add"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
     </layout>
 </window>

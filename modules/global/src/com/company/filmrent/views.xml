@@ -19,6 +19,9 @@
     <view entity="filmrent_Movie" name="movie-view" extends="_local">
         <property name="movieGenres" view="movieGenre-view"/>
         <property name="movieCasts" view="movieCast-view"/>
+        <property name="reviews" view="_local">
+            <property name="createdBy"/>
+        </property>
     </view>
     <view entity="filmrent_Library" name="library-view" extends="_local">
         <property name="critic" view="critic-view"/>
@@ -29,5 +32,10 @@
     </view>
     <view entity="filmrent_MovieCast" name="movieCast-view" extends="_base">
         <property name="actor" view="_local"/>
+    </view>
+    <view entity="filmrent_Review" name="review-view" extends="_base">
+        <property name="movie" view="_local"/>
+        <property name="createdBy"/>
+        <property name="createTs"/>
     </view>
 </views>

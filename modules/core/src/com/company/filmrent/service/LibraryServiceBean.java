@@ -48,6 +48,38 @@ public class LibraryServiceBean implements LibraryService {
             dataManager.commit(new CommitContext(movieInLibrary));
             return true;
         } catch (Exception e) {
+            log.error("Exception in LibraryServiceBean.setLooked", e);
+            return false;
+        }
+    }
+
+    @Override
+    public boolean getLooked(Movie movie, Critic critic) {
+        try {
+            Library movieInLibrary = getMovieInLibrary(movie, critic);
+            if (movieInLibrary != null) {
+                return movieInLibrary.getIsLooked();
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            log.error("Exception in LibraryServiceBean.getLooked", e);
+            return false;
+        }
+    }
+
+    @Override
+    public boolean removeFromLibrary(Movie movie, Critic critic) {
+        try {
+            Library movieInLibrary = getMovieInLibrary(movie, critic);
+            if (movieInLibrary != null) {
+                dataManager.remove(movieInLibrary);
+            } else {
+                return false;
+            }
+            return true;
+        } catch (Exception e) {
+            log.error("Exception in LibraryServiceBean.removeFromLibrary", e);
             return false;
         }
     }

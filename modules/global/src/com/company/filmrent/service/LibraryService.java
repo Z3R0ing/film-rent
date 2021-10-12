@@ -15,12 +15,28 @@ public interface LibraryService {
     public boolean isInLibrary(Movie movie, Critic critic);
 
     /**
-     * Добавляет фильм в библиотеку со статусом , либо изменяет статус на просмотренный
+     * Добавляет фильм в библиотеку со статусом <i>isLooked</i>, либо изменяет статус на просмотренный
      * @param movie - фильм
      * @param critic - кому добавляем
      * @param isLooked - просмотренно/непросмотренно
      * @return false если произошла ошибка с БД
      */
     boolean setLooked(Movie movie, Critic critic, boolean isLooked);
+
+    /**
+     * Добавляет фильм в библиотеку со статусом <i>isLooked</i>, либо изменяет статус на просмотренный
+     * @param movie - фильм
+     * @param critic - кому добавляем
+     * @return fasle если непросмотрено или нет в библиотеке
+     */
+    boolean getLooked(Movie movie, Critic critic);
+
+    /**
+     * Убирает фильм из библиотеки
+     * @param movie - фильм
+     * @param critic - кому добавляем
+     * @return false если произошла ошибка с БД или фильма нет в бибилиотеке
+     */
+    boolean removeFromLibrary(Movie movie, Critic critic);
 
 }

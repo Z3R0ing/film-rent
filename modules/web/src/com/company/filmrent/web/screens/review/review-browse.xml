@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://reviewBrowse.caption"
+        focusComponent="reviewsTable"
+        messagesPack="com.company.filmrent.web.screens.review">
+    <data readOnly="true">
+        <collection id="reviewsDc"
+                    class="com.company.filmrent.entity.review.Review">
+            <view extends="review-view"/>
+            <loader id="reviewsDl">
+                <query>
+                    <![CDATA[select e from filmrent_Review e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="reviewsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="reviewsTable"
+                dataLoader="reviewsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="reviewsTable"
+                    width="100%"
+                    dataContainer="reviewsDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="textOfReview"/>
+                <column id="movie"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="reviewsTable.create"/>
+                <button id="editBtn" action="reviewsTable.edit"/>
+                <button id="removeBtn" action="reviewsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

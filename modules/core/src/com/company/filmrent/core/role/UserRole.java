@@ -6,6 +6,7 @@ import com.company.filmrent.entity.genres.Genre;
 import com.company.filmrent.entity.genres.MovieGenre;
 import com.company.filmrent.entity.library.Library;
 import com.company.filmrent.entity.movie.Movie;
+import com.company.filmrent.entity.review.Review;
 import com.company.filmrent.entity.user.Critic;
 import com.haulmont.cuba.security.app.role.AnnotatedRoleDefinition;
 import com.haulmont.cuba.security.app.role.annotation.EntityAccess;
@@ -21,32 +22,22 @@ import com.haulmont.cuba.security.role.ScreenPermissionsContainer;
 public class UserRole extends AnnotatedRoleDefinition {
     public final static String NAME = "User";
 
+    @EntityAccess(entityName = "*", operations = {EntityOp.READ})
     @EntityAccess(entityClass = Movie.class,
-            operations = {EntityOp.READ})
-    @EntityAccess(entityClass = Critic.class,
-            operations = {EntityOp.READ})
+            operations = {EntityOp.READ, EntityOp.UPDATE})
     @EntityAccess(entityClass = Library.class,
             operations = {EntityOp.READ, EntityOp.CREATE, EntityOp.DELETE, EntityOp.UPDATE})
-    @EntityAccess(entityClass = Genre.class,
-            operations = {EntityOp.READ})
-    @EntityAccess(entityClass = MovieGenre.class,
-            operations = {EntityOp.READ})
-    @EntityAccess(entityClass = MovieCast.class,
-            operations = {EntityOp.READ})
-    @EntityAccess(entityClass = Actor.class,
-            operations = {EntityOp.READ})
+    @EntityAccess(entityClass = Review.class,
+            operations = {EntityOp.READ, EntityOp.CREATE, EntityOp.DELETE, EntityOp.UPDATE})
     @Override
     public EntityPermissionsContainer entityPermissions() {
         return super.entityPermissions();
     }
 
-    @EntityAttributeAccess(entityClass = Movie.class, modify = "*")
-    @EntityAttributeAccess(entityClass = Critic.class, modify = "*")
+    @EntityAttributeAccess(entityName = "*", view = "*")
+    @EntityAttributeAccess(entityClass = Movie.class, modify = "reviews")
     @EntityAttributeAccess(entityClass = Library.class, modify = "*")
-    @EntityAttributeAccess(entityClass = Genre.class, modify = "*")
-    @EntityAttributeAccess(entityClass = MovieGenre.class, modify = "*")
-    @EntityAttributeAccess(entityClass = MovieCast.class, modify = "*")
-    @EntityAttributeAccess(entityClass = Actor.class, modify = "*")
+    @EntityAttributeAccess(entityClass = Review.class, modify = "*")
     @Override
     public EntityAttributePermissionsContainer entityAttributePermissions() {
         return super.entityAttributePermissions();
@@ -62,7 +53,9 @@ public class UserRole extends AnnotatedRoleDefinition {
             "filmrent_Movies",
             "filmrent_MovieCard",
             "filmrent_Movie.more",
-            "filmrent_library"
+            "filmrent_library",
+            "filmrent_Review.edit",
+            "filmrent_Review.browse"
     })
     @Override
     public ScreenPermissionsContainer screenPermissions() {
