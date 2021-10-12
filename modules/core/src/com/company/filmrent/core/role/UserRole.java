@@ -1,5 +1,7 @@
 package com.company.filmrent.core.role;
 
+import com.company.filmrent.entity.actor.Actor;
+import com.company.filmrent.entity.actor.MovieCast;
 import com.company.filmrent.entity.genres.Genre;
 import com.company.filmrent.entity.genres.MovieGenre;
 import com.company.filmrent.entity.library.Library;
@@ -29,6 +31,10 @@ public class UserRole extends AnnotatedRoleDefinition {
             operations = {EntityOp.READ})
     @EntityAccess(entityClass = MovieGenre.class,
             operations = {EntityOp.READ})
+    @EntityAccess(entityClass = MovieCast.class,
+            operations = {EntityOp.READ})
+    @EntityAccess(entityClass = Actor.class,
+            operations = {EntityOp.READ})
     @Override
     public EntityPermissionsContainer entityPermissions() {
         return super.entityPermissions();
@@ -39,6 +45,8 @@ public class UserRole extends AnnotatedRoleDefinition {
     @EntityAttributeAccess(entityClass = Library.class, modify = "*")
     @EntityAttributeAccess(entityClass = Genre.class, modify = "*")
     @EntityAttributeAccess(entityClass = MovieGenre.class, modify = "*")
+    @EntityAttributeAccess(entityClass = MovieCast.class, modify = "*")
+    @EntityAttributeAccess(entityClass = Actor.class, modify = "*")
     @Override
     public EntityAttributePermissionsContainer entityAttributePermissions() {
         return super.entityAttributePermissions();
