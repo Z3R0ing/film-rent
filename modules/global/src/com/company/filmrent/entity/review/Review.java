@@ -15,6 +15,7 @@ import javax.validation.constraints.NotEmpty;
 public class Review extends StandardEntity {
     private static final long serialVersionUID = 9158151522904282186L;
 
+    @Lob
     @Column(name = "Text_of_review", nullable = false)
     @NotEmpty(message = "{filmrent_Review.textOfReview.validation.NotEmpty}")
     private String textOfReview;

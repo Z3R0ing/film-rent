@@ -36,6 +36,8 @@ public class LibraryScreen extends Screen {
     private GroupBoxLayout lookedBox;
     @Inject
     private GroupBoxLayout unlookedBox;
+    @Inject
+    private Label<String> criticName;
 
     @Subscribe
     public void onBeforeShow(BeforeShowEvent event) {
@@ -48,9 +50,10 @@ public class LibraryScreen extends Screen {
         if (lookedCritic.equals(libraryCritic)) {
             getWindow().setCaption(messages.getMessage(this.getClass(), "libraryScreen.caption"));
         } else {
-            getWindow().setCaption(messages.formatMessage(this.getClass(), "libraryScreen.captionOther", libraryCritic.getUser().getName()));
+            getWindow().setCaption(messages.formatMessage(this.getClass(), "libraryScreen.captionOther", libraryCritic.getUser().getLogin()));
         }
         librariesDl.load();
+        criticName.setValue(messages.formatMessage(this.getClass(), "libraryScreen.captionOther", libraryCritic.getUser().getLogin()));
         List<Library> moviesInLibrary = librariesDc.getItems();
         List<Library> looked = moviesInLibrary.stream()
                 .filter(Library::getIsLooked)

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://criticList.caption"
+        focusComponent="criticsTable"
+        messagesPack="com.company.filmrent.web.screens.critic">
+    <data readOnly="true">
+        <collection id="criticsDc"
+                    class="com.company.filmrent.entity.user.Critic">
+            <view extends="critic-view"/>
+            <loader id="criticsDl">
+                <query>
+                    <![CDATA[select e from filmrent_Critic e where e.userRang > :rang]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <layout expand="criticsTable"
+            spacing="true">
+        <label value="msg://criticList.caption" stylename="h2 bold"/>
+        <table id="criticsTable"
+               width="100%"
+               dataContainer="criticsDc"
+               stylename="borderless no-horizontal-lines no-vertical-lines">
+            <columns>
+                <column id="user.login"/>
+                <column id="userRang"/>
+            </columns>
+        </table>
+    </layout>
+</window>

@@ -188,4 +188,6 @@ select g from filmrent_MovieGenre g where g.movie = :movie
 select mg.movie from filmrent_MovieGenre mg where mg.genre = :genre
 
 select g from filmrent_Genre g where g in (select mg.genre from filmrent_MovieGenre mg)
+
+select e from filmrent_Critic e where e.userRang > :rang
 ```

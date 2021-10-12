@@ -14,6 +14,7 @@
     <menu id="filmRentMenu" caption="mainMsg://menu_config.application-filmrent">
         <item screen="filmrent_library" caption="mainMsg://menu_config.filmrent_library"/>
         <item screen="filmrent_Critic.about" caption="mainMsg://menu_config.filmrent_Critic.about"/>
+        <item screen="filmrent_Critic.list" caption="mainMsg://menu_config.filmrent_Critic.list"/>
     </menu>
     <menu id="help">
         <item id="aboutWindow" openType="DIALOG"/>

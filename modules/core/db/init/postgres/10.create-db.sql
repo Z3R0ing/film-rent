@@ -132,7 +132,7 @@ create table Review (
     DELETE_TS timestamp,
     DELETED_BY varchar(50),
     --
-    Text_of_review varchar(255) not null,
+    Text_of_review text not null,
     Movie_id uuid not null,
     --
     primary key (ID)

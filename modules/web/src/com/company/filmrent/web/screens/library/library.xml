@@ -15,6 +15,7 @@
     </data>
     <layout expand="vbox"
             spacing="true">
+        <label id="criticName" stylename="bold h1"/>
         <vbox id="vbox" spacing="true">
             <groupBox id="lookedBox" spacing="true" caption="msg://libraryScreen.looked" captionAsHtml="true"/>
             <groupBox id="unlookedBox" spacing="true" caption="msg://libraryScreen.unlooked" captionAsHtml="true"/>
