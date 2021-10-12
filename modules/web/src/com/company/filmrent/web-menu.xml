@@ -8,6 +8,7 @@
         <item screen="filmrent_Critic.browse" caption="mainMsg://menu_config.filmrent_Critic.browse"/>
         <item screen="filmrent_Library.browse" caption="mainMsg://menu_config.filmrent_Library.browse"/>
         <item screen="filmrent_Genre.browse" caption="mainMsg://menu_config.filmrent_Genre.browse"/>
+        <item screen="filmrent_Actor.browse" caption="mainMsg://menu_config.filmrent_Actor.browse"/>
     </menu>
     <menu id="filmRentMenu" caption="mainMsg://menu_config.application-filmrent">
         <item screen="filmrent_library" caption="mainMsg://menu_config.filmrent_library"/>
