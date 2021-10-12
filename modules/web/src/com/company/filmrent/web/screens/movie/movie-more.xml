@@ -8,6 +8,7 @@
                   view="movie-view">
             <loader id="movieDl"/>
             <collection id="movieGenresDc" property="movieGenres"/>
+            <collection id="movieCastsDc" property="movieCasts"/>
         </instance>
     </data>
     <dialogMode height="AUTO"
@@ -18,10 +19,10 @@
         <vbox id="vbox" spacing="true" width="100%">
             <form id="form" dataContainer="movieDc">
                 <column>
-                    <textField id="titleField" property="title" editable="false"/>
-                    <textField id="timeField" property="time" editable="false"/>
-                    <dateField id="dataReleaseField" property="dataRelease" editable="false"/>
-                    <textField id="numOfRatingField" property="numOfRating" editable="false"/>
+                    <textField id="titleField" property="title" editable="false" stylename="borderless"/>
+                    <textField id="timeField" property="time" editable="false" stylename="borderless"/>
+                    <dateField id="dataReleaseField" property="dataRelease" editable="false" stylename="borderless"/>
+                    <textField id="numOfRatingField" property="numOfRating" editable="false" stylename="borderless"/>
                 </column>
             </form>
             <popupButton id="popupAdd"
@@ -32,9 +33,18 @@
                 </actions>
             </popupButton>
             <groupBox id="movieGenresBox" caption="msg://com.company.filmrent.entity.movie/Movie.movieGenres" expand="movieGenresTable" height="AUTO" width="100%">
-                <table id="movieGenresTable" dataContainer="movieGenresDc" width="100%" columnHeaderVisible="false">
+                <table id="movieGenresTable" dataContainer="movieGenresDc" width="100%" columnHeaderVisible="false" stylename="borderless no-vertical-lines no-horizontal-lines no-stripes">
                     <columns>
                         <column id="genre" link="true" linkInvoke="openMoviesOfGenre"/>
+                    </columns>
+                </table>
+            </groupBox>
+            <groupBox id="movieCastsBox" caption="msg://com.company.filmrent.entity.movie/Movie.movieCasts" expand="movieCastsTable" height="AUTO" width="100%">
+                <table id="movieCastsTable" dataContainer="movieCastsDc" width="100%" stylename="borderless no-horizontal-lines no-vertical-lines">
+                    <columns>
+                        <column id="actor"/>
+                        <column id="actor.gender"/>
+                        <column id="role"/>
                     </columns>
                 </table>
             </groupBox>

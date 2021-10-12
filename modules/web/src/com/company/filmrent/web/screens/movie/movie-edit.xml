@@ -9,6 +9,7 @@
                   view="movie-view">
             <loader/>
             <collection id="movieGenresDc" property="movieGenres"/>
+            <collection id="movieCastsDc" property="movieCasts"/>
         </instance>
     </data>
     <dialogMode height="600"
@@ -36,6 +37,25 @@
                     <button action="movieGenresTable.create"/>
                     <button action="movieGenresTable.edit"/>
                     <button action="movieGenresTable.remove"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+        <groupBox id="movieCastsBox" caption="msg://com.company.filmrent.entity.movie/Movie.movieCasts">
+            <table id="movieCastsTable" dataContainer="movieCastsDc" width="100%" height="200px">
+                <actions>
+                    <action id="create" type="create" caption="mainMsg://actions.Add"/>
+                    <action id="edit" type="edit"/>
+                    <action id="remove" type="remove"/>
+                </actions>
+                <columns>
+                    <column id="actor"/>
+                    <column id="actor.gender"/>
+                    <column id="role"/>
+                </columns>
+                <buttonsPanel>
+                    <button action="movieCastsTable.create"/>
+                    <button action="movieCastsTable.edit"/>
+                    <button action="movieCastsTable.remove"/>
                 </buttonsPanel>
             </table>
         </groupBox>

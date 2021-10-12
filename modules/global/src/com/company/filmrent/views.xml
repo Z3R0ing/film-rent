@@ -17,12 +17,17 @@
         </property>
     </view>
     <view entity="filmrent_Movie" name="movie-view" extends="_local">
-        <property name="movieGenres" view="_base"/>
+        <property name="movieGenres" view="movieGenre-view"/>
+        <property name="movieCasts" view="movieCast-view"/>
     </view>
     <view entity="filmrent_Library" name="library-view" extends="_local">
         <property name="critic" view="critic-view"/>
         <property name="movie" view="movie-view"/>
     </view>
     <view entity="filmrent_MovieGenre" name="movieGenre-view" extends="_base">
+        <property name="genre" view="_local"/>
+    </view>
+    <view entity="filmrent_MovieCast" name="movieCast-view" extends="_base">
+        <property name="actor" view="_local"/>
     </view>
 </views>
