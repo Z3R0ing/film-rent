@@ -25,6 +25,8 @@ public class MovieCard extends ScreenFragment {
     @Inject
     private Messages messages;
     @Inject
+    private DataManager dataManager;
+    @Inject
     private Label<String> dataRelease;
     @Inject
     private Label<String> numOfRating;
@@ -36,8 +38,6 @@ public class MovieCard extends ScreenFragment {
     private Button more;
 
     private Movie movie;
-    @Inject
-    private DataManager dataManager;
 
     @Subscribe
     public void onAfterInit(AfterInitEvent event) {
