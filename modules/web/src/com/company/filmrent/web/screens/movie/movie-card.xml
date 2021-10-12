@@ -15,7 +15,8 @@
                 <button id="more"
                         align="MIDDLE_CENTER"
                         caption="msg://movie-card.more"
-                        icon="font-icon:EYE"/>
+                        icon="font-icon:EYE"
+                        stylename="primary"/>
             </hbox>
         </groupBox>
     </layout>
