@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://byDirectors.caption"
+        messagesPack="com.company.filmrent.web.screens.reports">
+    <data readOnly="true">
+        <collection id="moviesDc"
+                    class="com.company.filmrent.entity.movie.Movie"
+                    view="movie-view">
+            <loader id="moviesDl">
+                <query>
+                    <![CDATA[select m from filmrent_Movie m where m.director like :director]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <layout spacing="true" expand="forExport">
+        <hbox spacing="true">
+            <label value="msg://byDirectors.caption" stylename="h2 bold"/>
+            <button action="forExport.excel"/>
+        </hbox>
+        <hbox spacing="true">
+            <label value="msg://byDirectors.directorPick" stylename="h3 bold"/>
+            <textField id="directorField" editable="true"/>
+            <button id="searchBtn" caption="msg://byDirectors.search" icon="font-icon:SEARCH"/>
+        </hbox>
+        <table id="forExport" dataContainer="moviesDc" aggregationStyle="BOTTOM" width="100%">
+            <actions>
+                <action id="excel" type="excel"/>
+            </actions>
+            <columns>
+                <column id="title"/>
+                <column id="director"/>
+                <column id="isLooked" caption="msg://monthMovies.looked"/>
+            </columns>
+            <rows/>
+        </table>
+    </layout>
+</window>

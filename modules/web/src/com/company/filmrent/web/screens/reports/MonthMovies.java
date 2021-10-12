@@ -51,10 +51,10 @@ public class MonthMovies extends Screen {
     private Table<Movie> forExport;
     @Named("forExport.excel")
     private ExcelAction forExportExcel;
-
-    Critic critic = null;
     @Inject
     private Label<String> moviesCount;
+
+    private Critic critic = null;
 
     @Subscribe
     public void onBeforeShow(BeforeShowEvent event) {

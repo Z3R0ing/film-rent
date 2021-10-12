@@ -32,13 +32,7 @@ import java.util.List;
 @UiController("filmrent_MoviesGenres")
 @UiDescriptor("movies-genres.xml")
 public class MoviesGenres extends Screen {
-
-    @Inject
-    private UiComponents uiComponents;
-    @Inject
-    private Fragments fragments;
-    @Inject
-    private TimeSource timeSource;
+    
     @Inject
     private Messages messages;
     @Inject
@@ -48,13 +42,11 @@ public class MoviesGenres extends Screen {
     @Inject
     private CollectionLoader<MovieGenre> movieGenresDl;
     @Inject
-    private CollectionContainer<MovieGenre> movieGenresDc;
-    @Inject
     private Table<MovieGenre> forExport;
     @Named("forExport.excel")
     private ExcelAction forExportExcel;
 
-    Critic critic = null;
+    private Critic critic = null;
 
     @Subscribe
     public void onBeforeShow(BeforeShowEvent event) {
