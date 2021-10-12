@@ -58,7 +58,8 @@ public class UserRole extends AnnotatedRoleDefinition {
             "filmrent_Review.browse",
             "filmrent_MonthMovies",
             "filmrent_MoviesGenres",
-            "filmrent_ByDirectors"
+            "filmrent_ByDirectors",
+            "filmrent_ViewsCount"
     })
     @Override
     public ScreenPermissionsContainer screenPermissions() {

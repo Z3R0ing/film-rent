@@ -21,4 +21,11 @@ public interface MoviesService {
      * @return фильмы с таким жанром or empty list
      */
     List<Movie> getMoviesByGenres(Genre genre);
+
+    /**
+     * Метод получения количества просмотров фильма
+     * @param movie - фильм
+     * @return количество просмотров
+     */
+    int getViews(Movie movie);
 }

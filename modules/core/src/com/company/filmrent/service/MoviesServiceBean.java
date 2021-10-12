@@ -31,4 +31,12 @@ public class MoviesServiceBean implements MoviesService {
                 .view("movie-view")
                 .list();
     }
+
+    @Override
+    public int getViews(Movie movie) {
+        return dataManager.loadValue(
+                        "select count(l) from filmrent_Library l where l.movie = :movie", Integer.class)
+                .parameter("movie", movie)
+                .one();
+    }
 }

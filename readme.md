@@ -194,4 +194,6 @@ select e from filmrent_Critic e where e.userRang > :rang
 select l.movie from filmrent_Library l where l.updateTs > :monthAgo and l.isLooked = TRUE and l.critic = :critic
 
 select mg from filmrent_MovieGenre mg join mg.movie m where m in (select l.movie from filmrent_Library l where l.isLooked = TRUE and l.critic = :critic)
+
+select count(l) from filmrent_Library l where l.movie = :movie
 ```

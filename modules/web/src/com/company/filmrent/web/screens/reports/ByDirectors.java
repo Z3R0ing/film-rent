@@ -50,7 +50,7 @@ public class ByDirectors extends Screen {
     @Subscribe
     public void onBeforeShow(BeforeShowEvent event) {
         // set file name to export
-        forExportExcel.setFileName(messages.getMessage(this.getClass(), "monthMovies.caption"));
+        forExportExcel.setFileName(messages.getMessage(this.getClass(), "byDirectors.caption"));
         // set query param
         critic = criticService.getCurrentCritic();
         moviesDl.setParameter("director", ("%".concat(directorField.getRawValue()).concat("%")));

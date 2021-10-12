@@ -14,10 +14,12 @@
     <menu id="filmRentMenu" caption="mainMsg://menu_config.application-filmrent">
         <item screen="filmrent_library" caption="mainMsg://menu_config.filmrent_library"/>
         <item screen="filmrent_Critic.about" caption="mainMsg://menu_config.filmrent_Critic.about"/>
+        <separator/>
         <item screen="filmrent_Critic.list" caption="mainMsg://menu_config.filmrent_Critic.list"/>
         <item screen="filmrent_MonthMovies" caption="mainMsg://menu_config.filmrent_MonthMovies"/>
         <item screen="filmrent_MoviesGenres" caption="mainMsg://menu_config.filmrent_MoviesGenres"/>
         <item screen="filmrent_ByDirectors" caption="mainMsg://menu_config.filmrent_ByDirectors"/>
+        <item screen="filmrent_ViewsCount" caption="mainMsg://menu_config.filmrent_ViewsCount"/>
     </menu>
     <menu id="help">
         <item id="aboutWindow" openType="DIALOG"/>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://viewsCount.caption"
+        messagesPack="com.company.filmrent.web.screens.reports">
+    <data readOnly="true">
+        <collection id="moviesDc"
+                    class="com.company.filmrent.entity.movie.Movie"
+                    view="movie-view">
+            <loader id="moviesDl">
+                <query>
+                    <![CDATA[select m from filmrent_Movie m]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <layout spacing="true" expand="forExport">
+        <hbox spacing="true">
+            <label value="msg://viewsCount.caption" stylename="h2 bold"/>
+            <button action="forExport.excel"/>
+        </hbox>
+        <dataGrid id="forExport" dataContainer="moviesDc" width="100%" selectionMode="MULTI_CHECK">
+            <actions>
+                <action id="excel" type="excel"/>
+            </actions>
+            <columns>
+                <column property="title" id="title"/>
+            </columns>
+        </dataGrid>
+    </layout>
+</window>
