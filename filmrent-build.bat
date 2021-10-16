@@ -15,6 +15,9 @@ echo.
 echo.
 echo Please, press Ctrl+C if you see errors or red lines
 echo.
+echo ...Setting env...
+call env.bat > nul
+echo.
 echo ...Start building...
 call gradlew.bat build
 echo.
@@ -28,7 +31,7 @@ echo ...Setuping tomcat...
 call gradlew.bat setupTomcat
 echo.
 echo ...Setting env...
-more env.txt > deploy\tomcat\bin\setenv.bat
+more env.bat >> deploy\tomcat\bin\setenv.bat
 echo.
 echo thanks for work!
 pause
